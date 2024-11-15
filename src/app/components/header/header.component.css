@@ -1,0 +1,46 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  margin: 20px;
+}
+.nav-bar ul {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.nav-bar ul li,
+a {
+  list-style: none;
+  text-decoration: none;
+  color: black;
+  margin: 5px;
+}
+a:active {
+  text-decoration: underline;
+}
+.auth {
+  display: flex;
+  gap: 10px;
+  font-size: 16px;
+}
+.auth {
+  color: white;
+}
+.login,
+.signup {
+  color: white;
+  background: #007bff;
+  border: none;
+  border-radius: 10px;
+  padding: 7px;
+}
+
+.login:hover,
+.signup:hover {
+  border: 0.5px solid #007bff;
+  color: #007bff;
+  background-color: white;
+  transition: 0.4s linear;
+}

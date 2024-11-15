@@ -1,0 +1,21 @@
+<main>
+  <form action="" class="search-eng">
+    <input
+      type="text"
+      value="{{ text }}"
+      (change)="onChange($event)"
+      placeholder="Search"
+    />
+    <!-- <button class="btn-search" (click)="onSubmitSearch($event)">
+
+    </button> -->
+  </form>
+
+  <div class="inp-container">
+    <select name="" id="" class="speciality-list">
+      <option value="{{ list }}" *ngFor="let list of lists">{{ list }}</option>
+    </select>
+  </div>
+</main>
+<hr />
+<app-footer></app-footer>
