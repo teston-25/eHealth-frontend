@@ -6,6 +6,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { FaqComponent } from './components/faq/faq.component';
+import { DocterRoleComponent } from './components/docter-role/docter-role.component';
 
 export const routes: Routes = [
   { path: '', component: MainBodyComponent },
@@ -15,4 +16,5 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'faq', component: FaqComponent },
+  { path: 'doc', component: DocterRoleComponent },
 ];

@@ -1,21 +1,53 @@
+<app-header></app-header>
 <main>
-  <form action="" class="search-eng">
-    <input
-      type="text"
-      value="{{ text }}"
-      (change)="onChange($event)"
-      placeholder="Search"
-    />
-    <!-- <button class="btn-search" (click)="onSubmitSearch($event)">
-
-    </button> -->
-  </form>
-
-  <div class="inp-container">
-    <select name="" id="" class="speciality-list">
-      <option value="{{ list }}" *ngFor="let list of lists">{{ list }}</option>
+  <h1 class="intro">Welcome to <span class="lower">e</span>Health Platform</h1>
+  <div class="list-search">
+    <div class="inp-container">
+      <input
+        type="text"
+        placeholder="Search"
+        class="search-eng"
+        (input)="handleInput($event)"
+        (input)="filterDoctors()"
+      />
+      <ul class="list-table" *ngFor="let doctor of filteredDoctors">
+        <li>
+          <span style="font-weight: 500">{{ doctor.name }}</span> -
+          {{ doctor.specialty }} ({{ doctor.location }})
+        </li>
+        <hr />
+      </ul>
+    </div>
+    <select
+      [(ngModel)]="selectedSpecialty"
+      (change)="filterDoctors()"
+      class="select-cont"
+    >
+      <option value="" disabled selected>Select Specialties</option>
+      <option value="all">All Specialties</option>
+      <option *ngFor="let specialty of specialities" [value]="specialty">
+        {{ specialty }}
+      </option>
     </select>
   </div>
+
+  <div class="list-topDoctor">
+    <h1>Top Doctors</h1>
+    <ul>
+      <li *ngFor="let dtr of doctors">
+        <h2>{{ dtr.name }}</h2>
+        <h3>{{ dtr.specialty }}</h3>
+        <h4>{{ dtr.experience }} year Experience</h4>
+        <p>{{ dtr.location }}</p>
+      </li>
+    </ul>
+  </div>
+
+  <br />
+
+  <section class="btn">
+    <button class="btn-signup"><a href="/signup">Sign-Up</a></button>
+  </section>
 </main>
 <hr />
 <app-footer></app-footer>

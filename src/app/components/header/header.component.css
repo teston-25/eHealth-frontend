@@ -1,20 +1,27 @@
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
 nav {
   display: flex;
   justify-content: space-between;
   font-size: 18px;
-  margin: 20px;
+  padding: 20px;
+  background-color: #052c56;
+  color: white;
 }
 .nav-bar ul {
   display: flex;
   gap: 18px;
   align-items: center;
+  color: white;
 }
 
 .nav-bar ul li,
 a {
   list-style: none;
   text-decoration: none;
-  color: black;
+  /* color: black; */
   margin: 5px;
 }
 a:active {
@@ -30,8 +37,8 @@ a:active {
 }
 .login,
 .signup {
-  color: white;
-  background: #007bff;
+  color: #052c56;
+  background: white;
   border: none;
   border-radius: 10px;
   padding: 7px;
@@ -39,8 +46,8 @@ a:active {
 
 .login:hover,
 .signup:hover {
-  border: 0.5px solid #007bff;
-  color: #007bff;
-  background-color: white;
+  /* border: 0.5px solid #007bff; */
+  color: white;
+  background-color: #007bff;
   transition: 0.4s linear;
 }
