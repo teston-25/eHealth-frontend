@@ -55,8 +55,12 @@ select {
 .list-table {
   background: white;
   width: 49%;
-  margin-left: 10px;
-  padding: 10px;
+  margin-left: 11px;
+  border-radius: 0 0 10px 10px;
+}
+
+.list-table li {
+  padding: 5px 40px;
 }
 
 .inp-container select {
@@ -76,6 +80,7 @@ select {
 .list-topDoctor ul li {
   width: 300px;
   padding: 20px;
+  color: #052c56;
   border: 1px solid silver;
   border-radius: 10px;
   box-shadow: 2px 4px 3px gray;
@@ -97,4 +102,16 @@ select {
   padding: 10px 40px;
   border-radius: 10px;
   font-size: 18px;
+}
+.btn-view {
+  background-color: orangered;
+  color: white;
+  padding: 10px 40px;
+  border-radius: 10px;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+.doc-container {
+  display: flex;
+  flex-wrap: wrap;
 }

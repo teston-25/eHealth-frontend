@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { FooterComponent } from '../footer/footer.component';
 import { HeaderComponent } from '../header/header.component';
 import { FormsModule } from '@angular/forms';
-import { EmptyError } from 'rxjs';
 
 @Component({
   selector: 'app-main-body',
@@ -17,15 +16,20 @@ export class MainBodyComponent {
   searchName: string = '';
   selectedSpecialty: string = '';
   test: boolean = false;
+  text_doctors = 'Show Doctors';
 
   specialitiesNull = [];
-  specialities: string[] = [
-    'Cardiology',
-    'Neurology',
-    'Orthopedics',
-    'Pediatrics',
-    'Dermatology',
-  ];
+  doctors: Array<{
+    id: number;
+    name: string;
+    specialty: string;
+    experience: number;
+    location: string;
+  }> = [];
+  showDoctors = false;
+
+  speciality: string[] = [];
+  extraSpecialities: string[] = ['Pediatrics', 'Orthopedics'];
 
   infoDoctors = [
     {
@@ -240,34 +244,37 @@ export class MainBodyComponent {
     },
   ];
 
-  doctors = [
-    {
-      name: 'Dr. John Doe',
-      specialty: 'Cardiologist',
-      experience: 10,
-      location: 'New York, NY',
-      contact: '123-456-7890',
-    },
-    {
-      name: 'Dr. Jane Smith',
-      specialty: 'Gynecologist',
-      experience: 8,
-      location: 'Los Angeles, CA',
-      contact: '987-654-3210',
-    },
-    {
-      name: 'Dr. Emily White',
-      specialty: 'Dermatologist',
-      experience: 15,
-      location: 'Chicago, IL',
-      contact: '555-123-4567',
-    },
-  ];
+  ngOnInit() {
+    this.extractSpecialties();
+  }
+
+  extractSpecialties() {
+    const uniqueSpecialties = [
+      ...new Set(this.infoDoctors.map((doctor) => doctor.specialty)),
+    ];
+    this.speciality = [
+      ...new Set([...uniqueSpecialties, ...this.extraSpecialities]),
+    ];
+  }
+
+  Dtrs = () => {
+    this.showDoctors = !this.showDoctors;
+    if (this.showDoctors) {
+      this.text_doctors = 'Hide Doctors';
+      this.doctors = this.infoDoctors.filter(
+        (doctor) => doctor.experience > 15
+      );
+    } else {
+      this.text_doctors = 'Show Doctors';
+      this.doctors = [];
+    }
+  };
 
   filteredDoctors = this.test ? this.infoDoctors : this.specialitiesNull;
-
+  isFiltering = false;
   handleInput(event: Event) {
     this.searchName = (event.target as HTMLInputElement).value;
+    console.log(this.doctors);
   }
 
   onChangeSpeciality(event: Event) {
@@ -276,20 +283,25 @@ export class MainBodyComponent {
   }
 
   filterDoctors() {
-    const searchName = this.searchName?.toLowerCase() || ''; // Handle undefined/null
-    const selectedSpecialty = this.selectedSpecialty; // Use a concise variable for clarity
+    const searchName = this.searchName?.toLowerCase().trim();
+    const selectedSpecialty = this.selectedSpecialty?.toLowerCase();
+
+    // Show nothing if there's no search query
+    if (!searchName) {
+      this.filteredDoctors = [];
+      return;
+    }
 
     this.filteredDoctors = this.infoDoctors.filter((doctor) => {
-      // Check if the name matches the search query
+      // Check if name matches the search query
       const matchesName = doctor.name.toLowerCase().includes(searchName);
 
-      // Check if the specialty matches or if no specialty is selected
+      // Check if specialty matches (or allow all if 'all' is selected)
       const matchesSpecialty =
-        selectedSpecialty && selectedSpecialty !== 'all'
-          ? doctor.specialty === selectedSpecialty
-          : true;
+        selectedSpecialty === 'all'
+          ? true // Show all specialties
+          : doctor.specialty.toLowerCase() === selectedSpecialty;
 
-      // Combine both conditions
       return matchesName && matchesSpecialty;
     });
   }

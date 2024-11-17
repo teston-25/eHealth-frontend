@@ -3,14 +3,25 @@
   <div class="blog-container">
     <h1 class="header-blog">Blogs page</h1>
     <hr />
-    <p>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores
-      inventore repudiandae consectetur deserunt, ut delectus nobis animi
-      reiciendis vel ea nulla, fugiat amet explicabo ab iste accusamus dolorem
-      cupiditate eum eius impedit soluta commodi perferendis consequatur quam?
-      Eius vitae asperiores error quo sit quae, temporibus, blanditiis nisi
-      quidem, reiciendis quisquam!
-    </p>
+    <div
+      ng-app="HealthBlogApp"
+      ng-controller="BlogController"
+      class="blog-container"
+    >
+      <div class="blog-post" *ngFor="let post of blogPosts">
+        <h2>{{ post.title }}</h2>
+        <p class="author-date">
+          By <strong>{{ post.author }}</strong> on {{ post.date }}
+        </p>
+        <img alt="{{ post.title }}" class="blog-image" />
+        <p class="content">{{ post.content }}</p>
+        <ul class="tags">
+          <li *ngFor="let tag of post.tags">#{{ tag }}</li>
+        </ul>
+        <button class="read-more">Read More</button>
+        <button class="comment">Comment</button>
+      </div>
+    </div>
   </div>
 </main>
 <hr />
