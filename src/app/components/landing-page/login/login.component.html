@@ -4,12 +4,24 @@
     <div class="signup-header">Login</div>
     <div class="signup-form">
       <div class="input-wrapper">
-        <input type="email" id="user" class="input-field" required />
+        <input
+          type="email"
+          id="user"
+          [(ngModel)]="loginAuth.email"
+          class="input-field"
+          required
+        />
         <label for="name" class="label">Email</label>
         <i class="bx bx-user icon"></i>
       </div>
       <div class="input-wrapper">
-        <input type="password" id="user" class="input-field" required />
+        <input
+          type="password"
+          id="user"
+          [(ngModel)]="loginAuth.password"
+          class="input-field"
+          required
+        />
         <label for="number" class="label">Password</label>
         <i class="bx bx-user icon"></i>
       </div>

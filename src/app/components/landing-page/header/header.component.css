@@ -21,10 +21,10 @@ nav {
 a {
   list-style: none;
   text-decoration: none;
-  /* color: black; */
   margin: 5px;
 }
-a:active {
+a:hover,
+a:focus {
   text-decoration: underline;
 }
 .auth {

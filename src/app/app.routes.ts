@@ -1,15 +1,16 @@
 import { Routes } from '@angular/router';
-import { MainBodyComponent } from './components/homepage/main-body.component';
-import { BlogsComponent } from './components/blogs/blogs.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
-import { LoginComponent } from './components/login/login.component';
-import { SignupComponent } from './components/signup/signup.component';
 import { FaqComponent } from './components/faq/faq.component';
 import { DocterRoleComponent } from './components/docter-role/docter-role.component';
+import { MainBodyComponent } from './components/landing-page/homepage/main-body.component';
+import { LoginComponent } from './components/landing-page/login/login.component';
+import { SignupComponent } from './components/landing-page/signup/signup.component';
+import { BlogsComponent } from './components/landing-page/blogs/blogs.component';
 
 export const routes: Routes = [
-  { path: '', component: MainBodyComponent },
+  { path: '', component: DocterRoleComponent },
+  // { path: '', component: MainBodyComponent } ,
   { path: 'about', component: AboutComponent },
   { path: 'blog', component: BlogsComponent },
   { path: 'contact', component: ContactComponent },

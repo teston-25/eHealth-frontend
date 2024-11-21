@@ -1,0 +1,41 @@
+<nav>
+  <section class="logo">
+    <h3>E-Health</h3>
+  </section>
+
+  <section class="nav-bar">
+    <ul>
+      <li>
+        <a href="" id="home" (click)="handleNavigation($event, '/')">Home</a>
+      </li>
+      <li>
+        <a routerLink="/blog" (click)="handleNavigation($event, '/blog')"
+          >Blog</a
+        >
+      </li>
+      <li>
+        <a href="/doc" (click)="handleNavigation($event, '/doc')">Doc</a>
+      </li>
+      <li><a href="/faq" (click)="handleNavigation($event, '/faq')">FAQ</a></li>
+      <li>
+        <a href="/about" (click)="handleNavigation($event, '/about')"
+          >About Us</a
+        >
+      </li>
+      <li>
+        <a href="/contact" (click)="handleNavigation($event, '/contact')"
+          >Contact Us</a
+        >
+      </li>
+      <section class="auth">
+        <a
+          href="/login"
+          class="login"
+          (click)="handleNavigation($event, '/login')"
+          >Login</a
+        >
+        <a href="/signup" class="signup">Signup</a>
+      </section>
+    </ul>
+  </section>
+</nav>

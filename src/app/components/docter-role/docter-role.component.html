@@ -1,94 +1,329 @@
-<div class="docter-page">
-  <header>
-    <section class="logo">#</section>
-    <nav class="navbar">
-      <a href="">Home</a>
-      <a href="">Appointment</a>
-      <a href="">Blog</a>
-      <a href="">Notifications</a>
-      <a href="">Chat</a>
-      <a href="">Contact Us</a>
-      <a href="">Profile</a>
-    </nav>
-  </header>
-  <main>
-    <div class="">
-      <div class="home-page">
-        <h1>Welcome</h1>
-        <h3>Today's Appointments</h3>
-        <section>
-          <h3>Status of patient</h3>
-          <ol>
-            <!-- <li *ngFor="let appointment of appointments">{{ appointment }}</li> -->
-          </ol>
-        </section>
-      </div>
+<main>
+  <div class="docter-page">
+    <header class="nav-bar">
+      <section class="logo">
+        <h3>E-Health</h3>
+      </section>
 
-      <div class="appointment-page">
-        <h1>Appointments</h1>
-        <hr />
-        <h2>Upcoming Appointments</h2>
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia
-          dolore voluptatem sequi numquam dolorum quod reiciendis distinctio
-          repellat recusandae unde sint molestias odit doloribus porro nihil
-          totam culpa saepe dolores, ducimus incidunt eaque voluptates quia nam.
-          Corporis illum beatae totam itaque tempore saepe deleniti eaque
-          expedita eum quam ut nisi harum, esse voluptas debitis adipisci
-          excepturi magnam veniam eos pariatur mollitia, error fugit aspernatur
-          tempora. Amet at sit nam, explicabo aut cupiditate! Facilis, quod
-          culpa aspernatur possimus id perferendis ratione laboriosam corporis.
-          Magni reprehenderit in ipsam a magnam nulla veniam, pariatur at quis
-          asperiores repellat voluptatibus voluptas velit porro maxime.
-        </p>
-
-        <br />
-
-        <h2>Past Appointments</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus
-          velit consectetur, voluptas maiores quia dolores, tempore nihil ipsa,
-          atque ullam minus in a voluptatum magni? Totam, consequuntur, dolorum
-          minima sit sequi, consequatur enim similique aut animi doloribus modi
-          amet saepe hic aliquam! Alias reiciendis repellendus minima, provident
-          sunt iusto nisi.
-        </p>
-      </div>
-
-      <div class="blog-page">
-        <h1>Blogs</h1>
-        <hr />
-        <div class="text">
-          <h2>Name: {{ authorName }}</h2>
-          <h4>Specialized: {{ specialty }}</h4>
-          <h4>Address: {{ address }}</h4>
-          <h4>Phone: {{ phone }}</h4>
-          <h4>Bio: {{ bio }}</h4>
+      <nav class="nav">
+        <a href="">Home</a>
+        <a href="">Appointment</a>
+        <a href="">Chat</a>
+        <a href="">Blog</a>
+        <a href="">Notifications</a>
+        <a href="">Contact Us</a>
+        <a href="">Profile</a>
+      </nav>
+    </header>
+    <main>
+      <div class="">
+        <div class="home-banner">
+          <h1>Welcome, {{ doctor }}</h1>
+          <p>Your dashboard for managing appointments and communications</p>
         </div>
-        <br />
+
+        <div class="quick-links">
+          <div class="card" routerLink="/appointment">
+            <h3>Appointments</h3>
+            <p>View and manage your upcoming appointments</p>
+          </div>
+          <div class="card" routerLink="/notifications">
+            <h3>Notifications</h3>
+            <p>Check your latest updates</p>
+          </div>
+          <div class="card" routerLink="/chat">
+            <h3>Chat</h3>
+            <p>Communicate with patients</p>
+          </div>
+        </div>
+
+        <div class="appointment-header">
+          <h1>Appointments</h1>
+        </div>
+
+        <div class="appointment-list">
+          <h3>Upcoming Appointments</h3>
+          <ul>
+            <li *ngFor="let appointment of appointments">
+              {{ appointment.date }} - {{ appointment.time }}:
+              {{ appointment.patientName }} with {{ appointment.doctor }}
+            </li>
+          </ul>
+        </div>
+
+        <div class="chat-container">
+          <!-- Left Sidebar -->
+          <div class="chat-sidebar">
+            <h1 style="font-size: 24px">Chat</h1>
+            <input
+              type="text"
+              placeholder="Search Contacts"
+              [(ngModel)]="searchQuery"
+            />
+            <ul>
+              <li
+                *ngFor="let contact of filteredContacts"
+                (click)="selectContact(contact)"
+              >
+                {{ contact.name }}
+              </li>
+            </ul>
+          </div>
+
+          <!-- Chat Area -->
+          <div class="chat-area" *ngIf="selectedContact">
+            <div class="chat-header">
+              <h2>{{ selectedContact.name }}</h2>
+            </div>
+
+            <div class="chat-history">
+              <div *ngFor="let message of messages">
+                <p>{{ message.sender }}: {{ message.text }}</p>
+              </div>
+            </div>
+
+            <div class="chat-input">
+              <textarea [(ngModel)]="newMessage"></textarea>
+              <button (click)="sendMessage()">Send</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="blog-header">
+          <h1>Doctor's Blog</h1>
+          <button (click)="showAddBlogForm = !showAddBlogForm">Add Blog</button>
+        </div>
+
+        <div *ngIf="showAddBlogForm" class="blog-form">
+          <form (ngSubmit)="addBlog()">
+            <input
+              type="text"
+              placeholder="Title"
+              [(ngModel)]="newBlog.title"
+              name="title"
+              required
+            />
+            <textarea
+              placeholder="Content"
+              [(ngModel)]="newBlog.content"
+              name="content"
+              required
+            ></textarea>
+            <button type="submit">Post</button>
+          </form>
+        </div>
+
+        <div class="blog-list">
+          <div *ngFor="let blog of blogs" class="blog-post">
+            <h1>{{ doctor }}</h1>
+            <h3>{{ blog.title }}</h3>
+            <p>{{ blog.content }}</p>
+          </div>
+        </div>
+
+        <div class="notification-page">
+          <div class="notification-header">
+            <h1>Notification</h1>
+          </div>
+          <div class="notifications">
+            <div class="chat-notification">
+              <div class="notif-header c-header" (click)="onChat()">
+                <h1>Chat</h1>
+                <button (click)="onChat()">{{ btn0 }}</button>
+              </div>
+              <hr />
+              <ul *ngIf="!onCh">
+                <li *ngFor="let notMsg of chatNotifications">
+                  {{ notMsg.message }}
+                  <p>{{ notMsg.timestamp }}</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="comm-like-notification">
+              <div class="notif-header c-header" (click)="onComment()">
+                <h1>Comments</h1>
+                <button (click)="onComment()">{{ btn1 }}</button>
+              </div>
+              <hr />
+              <ul *ngIf="!onCom">
+                <li *ngFor="let comMsg of commentNotifications">
+                  {{ comMsg.message }}
+                  <p>{{ comMsg.timestamp }}</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="payment-notification">
+              <div class="notif-header p-header" (click)="onPay()">
+                <h1>Payment</h1>
+                <button (click)="onPay()">{{ btn2 }}</button>
+              </div>
+              <hr />
+              <ul *ngIf="!onP">
+                <li *ngFor="let payMsg of paymentNotifications">
+                  {{ payMsg.message }}
+                  <p>{{ payMsg.timestamp }}</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="appointment-reminder">
+              <div class="notif-header p-header" (click)="onAppoint()">
+                <h1>Appointment</h1>
+                <button (click)="onAppoint()">{{ btn3 }}</button>
+              </div>
+              <hr />
+              <ul *ngIf="!onA">
+                <li *ngFor="let appMsg of appointmentNotifications">
+                  {{ appMsg.patientName }}-{{ appMsg.notificationMessage }}
+                  <p>{{ appMsg.appointmentTime }}</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="profile-page">
+          <div class="profile">
+            <div class="profile-header">
+              <div class="profile-text-container">
+                <h1 class="profile-title">Doctor Profile</h1>
+              </div>
+              <img
+                src="/src/assets/images/download.png"
+                alt=""
+                class="profile-img"
+              />
+              <div class="profile-text-container">
+                <h3>{{ doctor }}</h3>
+                <h4>{{ specialitiy }}</h4>
+              </div>
+            </div>
+            <!-- <button class="btn" *ngIf="">edit Profile</button> -->
+            <button (click)="onEdit()" class="btn" *ngIf="!onEditing">
+              Edit Profile
+            </button>
+          </div>
+
+          <form class="account" *ngIf="onEditing">
+            <div class="account-header">
+              <h1 class="account-title">Edit Profile</h1>
+              <div class="btn-container">
+                <button class="btn-cancel" (click)="offEdit()">Cancel</button>
+                <button class="btn-save">Save</button>
+              </div>
+            </div>
+
+            <div class="account-edit" *ngIf="">
+              <div class="input-container">
+                <label>First Name</label>
+                <input type="text" placeholder="First Name" />
+              </div>
+              <div class="input-container">
+                <label>Last Name</label>
+                <input type="text" placeholder="Last Name" />
+              </div>
+            </div>
+
+            <div class="account-edit">
+              <div class="input-container">
+                <label>Email</label>
+                <input type="email" placeholder="Email" />
+              </div>
+              <div class="input-container">
+                <label>Phone Number</label>
+                <input type="text" placeholder="Phone number" />
+              </div>
+            </div>
+
+            <div class="account-edit">
+              <div class="input-container">
+                <label>Address</label>
+                <textarea placeholder="Address"></textarea>
+              </div>
+              <div class="input-container">
+                <label>Bio</label>
+                <textarea placeholder="bio"></textarea>
+              </div>
+            </div>
+
+            <div class="account-special">
+              <label>Specialized</label>
+              <select>
+                <option value="general">General Health</option>
+                <option value="pediatrics">Pediatrics</option>
+                <option value="cardiology">Cardiology</option>
+                <option value="dermatology">Dermatology</option>
+                <option value="orthopedics">Orthopedics</option>
+              </select>
+            </div>
+          </form>
+        </div>
+
+        <div class="contact-us-page">
+          <div class="contact-us-header">
+            <h1>Contact Us</h1>
+            <p>
+              If you have any questions or need assistance, feel free to reach
+              out to us!
+            </p>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="contact-form">
+            <h2>Send us a Message</h2>
+            <form (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  [(ngModel)]="contactForm.name"
+                  name="name"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  [(ngModel)]="contactForm.email"
+                  name="email"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea
+                  id="message"
+                  [(ngModel)]="contactForm.message"
+                  name="message"
+                  required
+                ></textarea>
+              </div>
+
+              <button type="submit" class="btn-submit">Submit</button>
+            </form>
+          </div>
+
+          <!-- Contact Details -->
+          <div class="contact-details">
+            <h2>Our Contact Information</h2>
+            <div class="contact-info">
+              <p><strong>Phone:</strong> +1 (123) 456-7890</p>
+              <p><strong>Email:</strong> {{ email }}</p>
+              <p>
+                <strong>Address:</strong> 123 Main Street, Addis Ababa, Ethiopia
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div class="notification-page">
-        <h1>Notification</h1>
-        <hr />
-
-        <br />
-      </div>
-
-      <div class="chat-page">
-        <h1>Chat</h1>
-        <hr />
-
-        <br />
-      </div>
-
-      <div class="profile-page">
-        <h1>Profile</h1>
-        <hr />
-
-        <br />
-      </div>
-    </div>
-  </main>
-  <app-footer></app-footer>
-</div>
+    </main>
+    <app-footer></app-footer>
+  </div>
+</main>

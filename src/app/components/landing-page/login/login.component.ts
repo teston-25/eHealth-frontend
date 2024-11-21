@@ -12,6 +12,10 @@ export class LoginComponent {
   email: string = '';
   password: string = '';
 
+  loginAuth = { email: '', password: '' };
+  login = { email: 'admin@gmail.com', password: 'admin' };
+  if() {}
+
   onSubmit() {
     console.log('Email:', this.email);
     console.log('Password:', this.password);
