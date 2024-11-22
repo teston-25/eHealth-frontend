@@ -1,13 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Router, RouterLink } from '@angular/router';
 import { FooterComponent } from '../landing-page/footer/footer.component';
 
 @Component({
   selector: 'app-docter-role',
   standalone: true,
-  imports: [FormsModule, CommonModule, FooterComponent, RouterLink],
+  imports: [FormsModule, CommonModule, FooterComponent],
   templateUrl: './docter-role.component.html',
   styleUrl: './docter-role.component.css',
 })
@@ -16,6 +15,42 @@ export class DocterRoleComponent {
   specialitiy = 'Cardiology';
   comments = [{ title: 'test', content: 'teston is testing' }];
   appointments = [
+    {
+      date: '2024-11-21',
+      time: '10:00 AM',
+      patientName: 'John Doe',
+      doctor: 'Dr. Smith',
+    },
+    {
+      date: '2024-11-22',
+      time: '11:30 AM',
+      patientName: 'Jane Smith',
+      doctor: 'Dr. Williams',
+    },
+    {
+      date: '2024-11-21',
+      time: '10:00 AM',
+      patientName: 'John Doe',
+      doctor: 'Dr. Smith',
+    },
+    {
+      date: '2024-11-22',
+      time: '11:30 AM',
+      patientName: 'Jane Smith',
+      doctor: 'Dr. Williams',
+    },
+    {
+      date: '2024-11-21',
+      time: '10:00 AM',
+      patientName: 'John Doe',
+      doctor: 'Dr. Smith',
+    },
+    {
+      date: '2024-11-22',
+      time: '11:30 AM',
+      patientName: 'Jane Smith',
+      doctor: 'Dr. Williams',
+    },
     {
       date: '2024-11-21',
       time: '10:00 AM',
@@ -39,6 +74,10 @@ export class DocterRoleComponent {
       title: 'Heart Health',
       content: 'Keep your heart healthy with these simple steps...',
     },
+    {
+      title: 'Managing Diabetes',
+      content: 'Tips for managing diabetes effectively...',
+    },
   ];
 
   contacts = [
@@ -48,11 +87,16 @@ export class DocterRoleComponent {
       specialty: 'Cardiologist',
       profilePic: 'sarah.png',
     },
-    { id: 2, name: 'John Doe', specialty: 'Patient', profilePic: 'john.png' },
+    {
+      id: 2,
+      name: 'John Mike',
+      specialty: 'Patient',
+      profilePic: 'john.png',
+    },
     {
       id: 3,
-      name: 'Dr. Mike',
-      specialty: 'Dermatologist',
+      name: 'Mike Vanico',
+      specialty: 'Patient',
       profilePic: 'mike.png',
     },
   ];
@@ -242,55 +286,39 @@ export class DocterRoleComponent {
     }
   }
   //Notification
-  btn0 = '➕';
-  btn1 = '➕';
-  btn2 = '➕';
-  btn3 = '➕';
-  onCh = true;
-  onCom = true;
-  onP = true;
-  onA = true;
+  btnStates = {
+    chat: '➕',
+    comment: '➕',
+    payment: '➕',
+    appointment: '➕',
+  };
 
-  onChat() {
-    if (this.onCh == true) {
-      this.btn0 = '✖️';
-      this.onCh = false;
-    } else {
-      this.onCh = true;
-      this.btn0 = '➕';
-    }
+  onState = {
+    chat: true,
+    comment: true,
+    payment: true,
+    appointment: true,
+  };
+
+  toggleState(type: 'chat' | 'comment' | 'payment' | 'appointment') {
+    this.onState[type] = !this.onState[type];
+    this.btnStates[type] = this.onState[type] ? '➕' : '✖️';
   }
 
+  onChat() {
+    this.toggleState('chat');
+  }
   onComment() {
-    if (this.onCom == true) {
-      this.btn1 = '✖️';
-      this.onCom = false;
-    } else {
-      this.onCom = true;
-      this.btn1 = '➕';
-    }
+    this.toggleState('comment');
   }
 
   onPay() {
-    if (this.onP == true) {
-      this.btn2 = '✖️';
-      this.onP = false;
-    } else {
-      this.onP = true;
-      this.btn2 = '➕';
-    }
+    this.toggleState('payment');
   }
 
   onAppoint() {
-    if (this.onA == true) {
-      this.onA = false;
-      this.btn3 = '✖️';
-    } else {
-      this.onA = true;
-      this.btn3 = '➕';
-    }
+    this.toggleState('appointment');
   }
-
   //contact
   email = 'support@gmail.com';
   contactForm = {

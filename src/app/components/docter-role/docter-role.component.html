@@ -1,329 +1,513 @@
 <main>
-  <div class="docter-page">
-    <header class="nav-bar">
-      <section class="logo">
-        <h3>E-Health</h3>
+  <div class="doctor-page mt-24 w-full h-full">
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-10 text-white">
+      <section class="flex justify-between items-center px-16 py-4">
+        <div class="logo text-2xl font-bold">
+          <h3>E-Health</h3>
+        </div>
+        <nav class="flex gap-6 items-center text-lg">
+          <a href="#" class="hover:underline">Home</a>
+          <a href="#" class="hover:underline">Appointment</a>
+          <a href="#" class="hover:underline">Chat</a>
+          <a href="#" class="hover:underline">Blog</a>
+          <a href="#" class="hover:underline">Notifications</a>
+          <a href="#" class="hover:underline">Contact Us</a>
+          <a
+            href="#"
+            class="ppDoc transition-transform duration-200 hover:scale-125"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              shape-rendering="geometricPrecision"
+              text-rendering="geometricPrecision"
+              image-rendering="optimizeQuality"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              viewBox="0 0 512 512"
+              width="28px"
+              hieght="28px"
+            >
+              <path
+                fill="#fff"
+                fill-rule="nonzero"
+                d="M256 0c68 0 132.89 26.95 180.96 75.04C485.05 122.99 512 188.11 512 256c0 68-26.95 132.89-75.04 180.96-23.49 23.56-51.72 42.58-83.15 55.6C323.59 505.08 290.54 512 256 512c-34.55 0-67.6-6.92-97.83-19.44l-.07-.03c-31.25-12.93-59.42-31.93-83.02-55.54l-.07-.07C26.9 388.82 0 324.03 0 256 0 116.78 112.74 0 256 0zm-52.73 332.87a67.668 67.668 0 01-5.6-6.74c-10.84-14.83-20.55-31.61-30.32-47.22-7.06-10.41-10.78-19.71-10.78-27.14 0-7.95 4.22-17.23 12.64-19.34-1.11-15.99-1.49-31.77-.74-48.88.37-4.08 1.12-8.17 2.23-12.27 4.84-17.1 16.73-30.86 31.61-40.15 5.2-3.35 10.78-5.94 17.1-8.18 10.78-4.09 5.57-20.45 17.48-20.82 27.88-.74 73.61 23.06 91.46 42.38 10.41 11.16 17.1 26.03 18.22 45.74l-1.12 44.03c5.2 1.49 8.55 4.84 10.04 10.04 1.49 5.95 0 14.13-5.2 25.67 0 .36-.38.36-.38.74-11.47 18.91-23.39 40.77-36.57 58.33-6.63 8.83-12.07 7.26-6.42 15.74 26.88 36.96 79.9 31.82 112.61 56.44 35.73-40.16 55.15-91.48 55.15-145.24 0-58.34-22.8-113.35-64.07-154.61v-.08C369.44 60.1 314.23 37.32 256 37.32 134.4 37.32 37.32 135.83 37.32 256c0 53.85 19.41 105.03 55.15 145.24 32.72-24.62 85.73-19.48 112.61-56.44 4.68-7.01 3.48-6.33-1.81-11.93z"
+              />
+            </svg>
+          </a>
+        </nav>
       </section>
-
-      <nav class="nav">
-        <a href="">Home</a>
-        <a href="">Appointment</a>
-        <a href="">Chat</a>
-        <a href="">Blog</a>
-        <a href="">Notifications</a>
-        <a href="">Contact Us</a>
-        <a href="">Profile</a>
-      </nav>
     </header>
-    <main>
-      <div class="">
-        <div class="home-banner">
-          <h1>Welcome, {{ doctor }}</h1>
-          <p>Your dashboard for managing appointments and communications</p>
+
+    <!-- Main Content -->
+    <div class="main bg-cover bg-fixed px-12 py-16">
+      <div class="home-banner text-white">
+        <h1 class="text-4xl font-bold mb-4">Welcome, {{ doctor }}</h1>
+        <p class="text-xl">
+          Your dashboard for <br />
+          managing appointments and <br />
+          communications
+        </p>
+      </div>
+
+      <div
+        class="quick-links flex flex-wrap justify-center gap-8 mt-12 m-20 text-center align-center"
+      >
+        <div
+          class="card bg-blue-600/50 text-white border shadow-md rounded-lg p-4 transition-transform duration-300 hover:scale-105"
+        >
+          <h3 class="text-xl font-bold mb-2">Appointments</h3>
+          <p>View and manage your upcoming appointments</p>
+        </div>
+        <div
+          class="card bg-blue-600/50 text-white border border-gray-300 shadow-md rounded-lg p-4 text-center transition-transform duration-300 hover:scale-105"
+        >
+          <h3 class="text-xl font-bold mb-2">Notifications</h3>
+          <p>Check your latest updates</p>
+        </div>
+        <div
+          class="card bg-blue-600/50 text-white border border-gray-300 shadow-md rounded-lg p-4 text-center transition-transform duration-300 hover:scale-105"
+        >
+          <h3 class="text-xl font-bold mb-2">Chat</h3>
+          <p>Communicate with patients</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-appointment bg-white shadow-lg rounded-lg overflow-hidden">
+      <!-- Appointment Header -->
+      <div
+        class="appointment-header flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-500 to-indigo-500 text-white"
+      >
+        <h1 class="text-3xl font-bold">Appointments</h1>
+      </div>
+
+      <!-- Appointment List -->
+      <div class="appointment-list p-6">
+        <h3 class="text-lg font-semibold text-gray-700 mb-4">
+          Upcoming Appointments
+        </h3>
+        <ul class="space-y-4">
+          <li
+            *ngFor="let appointment of appointments"
+            class="p-4 bg-gray-50 rounded-lg border border-gray-200 shadow flex justify-between items-center"
+          >
+            <div>
+              <p class="text-gray-800 font-medium">
+                {{ appointment.date }} - {{ appointment.time }}
+              </p>
+              <p class="text-gray-500">
+                {{ appointment.patientName }} with {{ appointment.doctor }}
+              </p>
+            </div>
+            <button
+              class="p-4 text-black rounded-lg shadow hover:bg-blue-600 hover:text-white"
+            >
+              View Details
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <br /><br />
+
+    <!-- chat-page -->
+    <div
+      class="chat-container flex border border-gray-300 rounded overflow-hidden"
+    >
+      <!-- Left Sidebar -->
+      <div class="chat-sidebar w-1/3 bg-gray-100 p-4 border-r border-gray-300">
+        <h1 class="text-2xl font-bold mb-4">Chat</h1>
+        <input
+          type="text"
+          placeholder="Search Contacts"
+          [(ngModel)]="searchQuery"
+          class="w-full p-2 border border-gray-300 rounded mb-4 text-sm"
+        />
+        <ul class="list-none p-0">
+          <li
+            *ngFor="let contact of filteredContacts"
+            (click)="selectContact(contact)"
+            class="p-3 mb-3 border border-gray-300 rounded flex items-center gap-2 cursor-pointer hover:bg-gray-200"
+          >
+            {{ contact.name }}
+          </li>
+        </ul>
+      </div>
+
+      <div
+        class="chat-area flex flex-col flex-grow bg-white"
+        *ngIf="selectedContact"
+      >
+        <div
+          class="chat-header p-5 bg-blue-600 text-white text-lg font-semibold"
+        >
+          {{ selectedContact.name }}
         </div>
 
-        <div class="quick-links">
-          <div class="card" routerLink="/appointment">
-            <h3>Appointments</h3>
-            <p>View and manage your upcoming appointments</p>
-          </div>
-          <div class="card" routerLink="/notifications">
-            <h3>Notifications</h3>
-            <p>Check your latest updates</p>
-          </div>
-          <div class="card" routerLink="/chat">
-            <h3>Chat</h3>
-            <p>Communicate with patients</p>
+        <div
+          class="chat-history flex-grow bg-gray-100 bg-cover bg-center p-4 overflow-y-auto"
+        >
+          <div *ngFor="let message of messages" class="mb-3">
+            <p
+              class="p-3"
+              [ngClass]="{
+                'bg-blue-600 text-white text-left': message.sender === 'You',
+                'bg-gray-200 text-black text-right': message.sender !== 'You'
+              }"
+            >
+              {{ message.sender }}: {{ message.text }}
+            </p>
           </div>
         </div>
 
-        <div class="appointment-header">
-          <h1>Appointments</h1>
+        <div
+          class="chat-input p-4 flex gap-3 border-t border-gray-300 bg-white"
+        >
+          <textarea
+            [(ngModel)]="newMessage"
+            class="flex-grow p-2 border border-gray-300 rounded resize-none h-10"
+          ></textarea>
+          <button
+            (click)="sendMessage()"
+            class="bg-green-600 text-white rounded hover:bg-green-700 transition"
+          >
+            Send
+          </button>
         </div>
+      </div>
+    </div>
 
-        <div class="appointment-list">
-          <h3>Upcoming Appointments</h3>
-          <ul>
-            <li *ngFor="let appointment of appointments">
-              {{ appointment.date }} - {{ appointment.time }}:
-              {{ appointment.patientName }} with {{ appointment.doctor }}
+    <br /><br />
+
+    <!-- blog-page -->
+    <div
+      class="blog-header bg-gradient-to-r from-blue-500 to-indigo-500 text-white p-6 flex justify-between items-center rounded-t-lg shadow-lg"
+    >
+      <h1 class="text-3xl font-bold">Doctor's Blog</h1>
+      <button
+        (click)="showAddBlogForm = !showAddBlogForm"
+        class="px-4 py-2 bg-blue text-white font-medium rounded-lg shadow transition"
+      >
+        Add Blog
+      </button>
+    </div>
+
+    <div
+      *ngIf="showAddBlogForm"
+      class="blog-form p-6 bg-white shadow-lg rounded-b-lg border-t-2 border-gray-300"
+    >
+      <form (ngSubmit)="addBlog()">
+        <input
+          type="text"
+          placeholder="Title"
+          [(ngModel)]="newBlog.title"
+          name="title"
+          required
+          class="w-full p-4 border border-gray-300 rounded-lg mb-4 text-lg focus:outline-none focus:ring-2 focus:ring-gray-500"
+        />
+        <textarea
+          placeholder="Content"
+          [(ngModel)]="newBlog.content"
+          name="content"
+          required
+          class="w-full p-4 border border-gray-300 rounded-lg mb-4 text-lg focus:outline-none focus:ring-2 focus:ring-gray-200"
+        ></textarea>
+        <button
+          type="submit"
+          class="w-full py-3 bg-green-500 text-white font-medium rounded-lg shadow hover:bg-green-600 transition"
+        >
+          Post
+        </button>
+      </form>
+    </div>
+
+    <div class="blog-list p-6">
+      <div
+        *ngFor="let blog of blogs"
+        class="blog-post p-6 bg-white rounded-lg shadow-lg hover:shadow-2xl transition"
+      >
+        <section class="img bg-gray-300 h-40"></section>
+        <h1 class="text-xl font-semibold text-gray-800">{{ doctor }}</h1>
+        <h3 class="text-2xl font-bold text-gray-900">{{ blog.title }}</h3>
+        <p class="text-gray-700">{{ blog.content }}</p>
+      </div>
+    </div>
+
+    <br /><br />
+
+    <!-- notification-page -->
+    <div class="notification-page block align-center min-h-screen bg-gray-50">
+      <!-- Notification Header -->
+      <div
+        class="notification-header bg-gray-100 px-6 py-4 text-3xl font-semibold text-gray-800 border-b-2 border-gray-300 shadow-md"
+      >
+        <h1>Notifications</h1>
+      </div>
+
+      <!-- Notifications Section -->
+      <div class="notifications block space-y-6 p-6 w-full max-w-4xl">
+        <!-- Chat Notification -->
+        <div
+          class="chat-notification bg-white p-4 rounded-lg shadow-lg transform transition-all hover:scale-105 hover:bg-gray-100 hover:shadow-xl"
+        >
+          <div
+            class="notif-header flex justify-between items-center py-3 cursor-pointer hover:text-blue-600 transition duration-200"
+          >
+            <h1 class="text-xl font-semibold text-gray-800">Chat</h1>
+            <button
+              (click)="onChat()"
+              class="text-blue-500 hover:text-blue-700 transition duration-200"
+            >
+              {{ btnStates.chat }}
+            </button>
+          </div>
+          <hr />
+          <ul *ngIf="!onState.chat" class="space-y-3 mt-4">
+            <li
+              *ngFor="let notMsg of chatNotifications"
+              class="p-3 border border-gray-200 bg-white rounded-lg hover:bg-gray-50 transition duration-200 transform"
+            >
+              <p class="text-gray-800">{{ notMsg.message }}</p>
+              <p class="text-sm text-gray-500">{{ notMsg.timestamp }}</p>
             </li>
           </ul>
         </div>
 
-        <div class="chat-container">
-          <!-- Left Sidebar -->
-          <div class="chat-sidebar">
-            <h1 style="font-size: 24px">Chat</h1>
-            <input
-              type="text"
-              placeholder="Search Contacts"
-              [(ngModel)]="searchQuery"
-            />
-            <ul>
-              <li
-                *ngFor="let contact of filteredContacts"
-                (click)="selectContact(contact)"
-              >
-                {{ contact.name }}
-              </li>
-            </ul>
-          </div>
-
-          <!-- Chat Area -->
-          <div class="chat-area" *ngIf="selectedContact">
-            <div class="chat-header">
-              <h2>{{ selectedContact.name }}</h2>
-            </div>
-
-            <div class="chat-history">
-              <div *ngFor="let message of messages">
-                <p>{{ message.sender }}: {{ message.text }}</p>
-              </div>
-            </div>
-
-            <div class="chat-input">
-              <textarea [(ngModel)]="newMessage"></textarea>
-              <button (click)="sendMessage()">Send</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="blog-header">
-          <h1>Doctor's Blog</h1>
-          <button (click)="showAddBlogForm = !showAddBlogForm">Add Blog</button>
-        </div>
-
-        <div *ngIf="showAddBlogForm" class="blog-form">
-          <form (ngSubmit)="addBlog()">
-            <input
-              type="text"
-              placeholder="Title"
-              [(ngModel)]="newBlog.title"
-              name="title"
-              required
-            />
-            <textarea
-              placeholder="Content"
-              [(ngModel)]="newBlog.content"
-              name="content"
-              required
-            ></textarea>
-            <button type="submit">Post</button>
-          </form>
-        </div>
-
-        <div class="blog-list">
-          <div *ngFor="let blog of blogs" class="blog-post">
-            <h1>{{ doctor }}</h1>
-            <h3>{{ blog.title }}</h3>
-            <p>{{ blog.content }}</p>
-          </div>
-        </div>
-
-        <div class="notification-page">
-          <div class="notification-header">
-            <h1>Notification</h1>
-          </div>
-          <div class="notifications">
-            <div class="chat-notification">
-              <div class="notif-header c-header" (click)="onChat()">
-                <h1>Chat</h1>
-                <button (click)="onChat()">{{ btn0 }}</button>
-              </div>
-              <hr />
-              <ul *ngIf="!onCh">
-                <li *ngFor="let notMsg of chatNotifications">
-                  {{ notMsg.message }}
-                  <p>{{ notMsg.timestamp }}</p>
-                </li>
-              </ul>
-            </div>
-
-            <div class="comm-like-notification">
-              <div class="notif-header c-header" (click)="onComment()">
-                <h1>Comments</h1>
-                <button (click)="onComment()">{{ btn1 }}</button>
-              </div>
-              <hr />
-              <ul *ngIf="!onCom">
-                <li *ngFor="let comMsg of commentNotifications">
-                  {{ comMsg.message }}
-                  <p>{{ comMsg.timestamp }}</p>
-                </li>
-              </ul>
-            </div>
-
-            <div class="payment-notification">
-              <div class="notif-header p-header" (click)="onPay()">
-                <h1>Payment</h1>
-                <button (click)="onPay()">{{ btn2 }}</button>
-              </div>
-              <hr />
-              <ul *ngIf="!onP">
-                <li *ngFor="let payMsg of paymentNotifications">
-                  {{ payMsg.message }}
-                  <p>{{ payMsg.timestamp }}</p>
-                </li>
-              </ul>
-            </div>
-
-            <div class="appointment-reminder">
-              <div class="notif-header p-header" (click)="onAppoint()">
-                <h1>Appointment</h1>
-                <button (click)="onAppoint()">{{ btn3 }}</button>
-              </div>
-              <hr />
-              <ul *ngIf="!onA">
-                <li *ngFor="let appMsg of appointmentNotifications">
-                  {{ appMsg.patientName }}-{{ appMsg.notificationMessage }}
-                  <p>{{ appMsg.appointmentTime }}</p>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="profile-page">
-          <div class="profile">
-            <div class="profile-header">
-              <div class="profile-text-container">
-                <h1 class="profile-title">Doctor Profile</h1>
-              </div>
-              <img
-                src="/src/assets/images/download.png"
-                alt=""
-                class="profile-img"
-              />
-              <div class="profile-text-container">
-                <h3>{{ doctor }}</h3>
-                <h4>{{ specialitiy }}</h4>
-              </div>
-            </div>
-            <!-- <button class="btn" *ngIf="">edit Profile</button> -->
-            <button (click)="onEdit()" class="btn" *ngIf="!onEditing">
-              Edit Profile
+        <!-- Comment Notification -->
+        <div
+          class="comm-like-notification bg-white p-4 rounded-lg shadow-lg transform transition-all hover:scale-105 hover:bg-gray-100 hover:shadow-xl"
+        >
+          <div
+            class="notif-header flex justify-between items-center py-3 cursor-pointer hover:text-blue-600 transition duration-200"
+          >
+            <h1 class="text-xl font-semibold text-gray-800">Comments</h1>
+            <button
+              (click)="onComment()"
+              class="text-blue-500 hover:text-blue-700 transition duration-200"
+            >
+              {{ btnStates.comment }}
             </button>
           </div>
+          <hr />
+          <ul *ngIf="!onState.comment" class="space-y-3 mt-4">
+            <li
+              *ngFor="let comMsg of commentNotifications"
+              class="p-3 border border-gray-200 bg-white rounded-lg hover:bg-gray-50 transition duration-200 transform"
+            >
+              <p class="text-gray-800">{{ comMsg.message }}</p>
+              <p class="text-sm text-gray-500">{{ comMsg.timestamp }}</p>
+            </li>
+          </ul>
+        </div>
 
-          <form class="account" *ngIf="onEditing">
-            <div class="account-header">
-              <h1 class="account-title">Edit Profile</h1>
-              <div class="btn-container">
-                <button class="btn-cancel" (click)="offEdit()">Cancel</button>
-                <button class="btn-save">Save</button>
-              </div>
+        <!-- Payment Notification -->
+        <div
+          class="payment-notification bg-white p-4 rounded-lg shadow-lg transform transition-all hover:scale-105 hover:bg-gray-100 hover:shadow-xl"
+        >
+          <div
+            class="notif-header flex justify-between items-center py-3 cursor-pointer hover:text-blue-600 transition duration-200"
+          >
+            <h1 class="text-xl font-semibold text-gray-800">Payment</h1>
+            <button
+              (click)="onPay()"
+              class="text-blue-500 hover:text-blue-700 transition duration-200"
+            >
+              {{ btnStates.payment }}
+            </button>
+          </div>
+          <hr />
+          <ul *ngIf="!onState.payment" class="space-y-3 mt-4">
+            <li
+              *ngFor="let payMsg of paymentNotifications"
+              class="p-3 border border-gray-200 bg-white rounded-lg hover:bg-gray-50 transition duration-200 transform"
+            >
+              <p class="text-gray-800">{{ payMsg.message }}</p>
+              <p class="text-sm text-gray-500">{{ payMsg.timestamp }}</p>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Appointment Reminder Notification -->
+        <div
+          class="appointment-reminder bg-white p-4 rounded-lg shadow-lg transform transition-all hover:scale-105 hover:bg-gray-100 hover:shadow-xl"
+        >
+          <div
+            class="notif-header flex justify-between items-center py-3 cursor-pointer hover:text-blue-600 transition duration-200"
+          >
+            <h1 class="text-xl font-semibold text-gray-800">Appointment</h1>
+            <button
+              (click)="onAppoint()"
+              class="text-blue-500 hover:text-blue-700 transition duration-200"
+            >
+              {{ btnStates.appointment }}
+            </button>
+          </div>
+          <hr />
+          <ul *ngIf="!onState.appointment" class="space-y-3 mt-4">
+            <li
+              *ngFor="let appMsg of appointmentNotifications"
+              class="p-3 border border-gray-200 bg-white rounded-lg hover:bg-gray-50 transition duration-200 transform hover:scale-105"
+            >
+              <p class="text-gray-800">
+                {{ appMsg.patientName }} - {{ appMsg.notificationMessage }}
+              </p>
+              <p class="text-sm text-gray-500">{{ appMsg.appointmentTime }}</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile-page">
+      <div class="profile">
+        <div class="profile-header">
+          <div class="profile-text-container">
+            <h1 class="profile-title">Doctor Profile</h1>
+          </div>
+          <img src="" alt="" class="profile-img" />
+          <div class="profile-text-container">
+            <h3>{{ doctor }}</h3>
+            <h4>{{ specialitiy }}</h4>
+          </div>
+        </div>
+        <!-- <button class="btn" *ngIf="">edit Profile</button> -->
+        <button (click)="onEdit()" class="btn" *ngIf="!onEditing">
+          Edit Profile
+        </button>
+      </div>
+
+      <form class="account" *ngIf="onEditing">
+        <div class="account-header">
+          <h1 class="account-title">Edit Profile</h1>
+          <div class="btn-container">
+            <button class="btn-cancel" (click)="offEdit()">Cancel</button>
+            <button class="btn-save">Save</button>
+          </div>
+        </div>
+
+        <div class="account-edit" *ngIf="">
+          <div class="input-container">
+            <label>First Name</label>
+            <input type="text" placeholder="First Name" />
+          </div>
+          <div class="input-container">
+            <label>Last Name</label>
+            <input type="text" placeholder="Last Name" />
+          </div>
+        </div>
+
+        <div class="account-edit">
+          <div class="input-container">
+            <label>Email</label>
+            <input type="email" placeholder="Email" />
+          </div>
+          <div class="input-container">
+            <label>Phone Number</label>
+            <input type="text" placeholder="Phone number" />
+          </div>
+        </div>
+
+        <div class="account-edit">
+          <div class="input-container">
+            <label>Address</label>
+            <textarea placeholder="Address"></textarea>
+          </div>
+          <div class="input-container">
+            <label>Bio</label>
+            <textarea placeholder="bio"></textarea>
+          </div>
+        </div>
+
+        <div class="account-special">
+          <label>Specialized</label>
+          <select>
+            <option value="general">General Health</option>
+            <option value="pediatrics">Pediatrics</option>
+            <option value="cardiology">Cardiology</option>
+            <option value="dermatology">Dermatology</option>
+            <option value="orthopedics">Orthopedics</option>
+          </select>
+        </div>
+      </form>
+    </div>
+
+    <div class="contact-us-page">
+      <div class="contact-us-header">
+        <h1>Contact Us</h1>
+        <p>
+          If you have any questions or need assistance, feel free to reach out
+          to us!
+        </p>
+      </div>
+      <div class="contact-page flex flex-wrap items-center py-12 px-6">
+        <div
+          class="contact-form bg-white shadow-xl rounded-lg p-8 w-full max-w-xl"
+        >
+          <h2 class="text-2xl font-semibold text-center text-gray-800 mb-6">
+            Send us a Message
+          </h2>
+          <form (ngSubmit)="onSubmit()" class="space-y-6">
+            <div class="form-group">
+              <label for="name" class="text-gray-700">Name</label>
+              <input
+                type="text"
+                id="name"
+                [(ngModel)]="contactForm.name"
+                name="name"
+                required
+                class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
+              />
             </div>
 
-            <div class="account-edit" *ngIf="">
-              <div class="input-container">
-                <label>First Name</label>
-                <input type="text" placeholder="First Name" />
-              </div>
-              <div class="input-container">
-                <label>Last Name</label>
-                <input type="text" placeholder="Last Name" />
-              </div>
+            <div class="form-group">
+              <label for="email" class="text-gray-700">Email</label>
+              <input
+                type="email"
+                id="email"
+                [(ngModel)]="contactForm.email"
+                name="email"
+                required
+                class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
+              />
             </div>
 
-            <div class="account-edit">
-              <div class="input-container">
-                <label>Email</label>
-                <input type="email" placeholder="Email" />
-              </div>
-              <div class="input-container">
-                <label>Phone Number</label>
-                <input type="text" placeholder="Phone number" />
-              </div>
+            <div class="form-group">
+              <label for="message" class="text-gray-700">Message</label>
+              <textarea
+                id="message"
+                [(ngModel)]="contactForm.message"
+                name="message"
+                required
+                class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
+              ></textarea>
             </div>
 
-            <div class="account-edit">
-              <div class="input-container">
-                <label>Address</label>
-                <textarea placeholder="Address"></textarea>
-              </div>
-              <div class="input-container">
-                <label>Bio</label>
-                <textarea placeholder="bio"></textarea>
-              </div>
-            </div>
-
-            <div class="account-special">
-              <label>Specialized</label>
-              <select>
-                <option value="general">General Health</option>
-                <option value="pediatrics">Pediatrics</option>
-                <option value="cardiology">Cardiology</option>
-                <option value="dermatology">Dermatology</option>
-                <option value="orthopedics">Orthopedics</option>
-              </select>
-            </div>
+            <button type="submit" class="btn-submit">Submit</button>
           </form>
         </div>
 
-        <div class="contact-us-page">
-          <div class="contact-us-header">
-            <h1>Contact Us</h1>
+        <div
+          class="contact-details bg-white shadow-xl rounded-lg p-8 mt-8 w-full max-w-xl"
+        >
+          <h2 class="text-2xl font-semibold text-center text-gray-800 mb-6">
+            Our Contact Information
+          </h2>
+          <div class="contact-info space-y-4 text-gray-700">
             <p>
-              If you have any questions or need assistance, feel free to reach
-              out to us!
+              <strong class="text-gray-800">Phone:</strong> +1 (123) 456-7890
             </p>
-          </div>
-
-          <!-- Contact Form -->
-          <div class="contact-form">
-            <h2>Send us a Message</h2>
-            <form (ngSubmit)="onSubmit()">
-              <div class="form-group">
-                <label for="name">Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  [(ngModel)]="contactForm.name"
-                  name="name"
-                  required
-                />
-              </div>
-
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  [(ngModel)]="contactForm.email"
-                  name="email"
-                  required
-                />
-              </div>
-
-              <div class="form-group">
-                <label for="message">Message</label>
-                <textarea
-                  id="message"
-                  [(ngModel)]="contactForm.message"
-                  name="message"
-                  required
-                ></textarea>
-              </div>
-
-              <button type="submit" class="btn-submit">Submit</button>
-            </form>
-          </div>
-
-          <!-- Contact Details -->
-          <div class="contact-details">
-            <h2>Our Contact Information</h2>
-            <div class="contact-info">
-              <p><strong>Phone:</strong> +1 (123) 456-7890</p>
-              <p><strong>Email:</strong> {{ email }}</p>
-              <p>
-                <strong>Address:</strong> 123 Main Street, Addis Ababa, Ethiopia
-              </p>
-            </div>
+            <p><strong class="text-gray-800">Email:</strong> {{ email }}</p>
+            <p>
+              <strong class="text-gray-800">Address:</strong> 123 Main Street,
+              Addis Ababa, Ethiopia
+            </p>
           </div>
         </div>
       </div>
-    </main>
-    <app-footer></app-footer>
+    </div>
   </div>
+  <app-footer></app-footer>
 </main>
+<!-- </div> -->
