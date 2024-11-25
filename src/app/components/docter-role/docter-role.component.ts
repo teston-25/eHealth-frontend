@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from '../landing-page/footer/footer.component';
@@ -18,7 +18,7 @@ export class DocterRoleComponent {
     {
       date: '2024-11-21',
       time: '10:00 AM',
-      patientName: 'John Doe',
+      patientName: 'John Brooks',
       doctor: 'Dr. Smith',
     },
     {
@@ -30,31 +30,7 @@ export class DocterRoleComponent {
     {
       date: '2024-11-21',
       time: '10:00 AM',
-      patientName: 'John Doe',
-      doctor: 'Dr. Smith',
-    },
-    {
-      date: '2024-11-22',
-      time: '11:30 AM',
-      patientName: 'Jane Smith',
-      doctor: 'Dr. Williams',
-    },
-    {
-      date: '2024-11-21',
-      time: '10:00 AM',
-      patientName: 'John Doe',
-      doctor: 'Dr. Smith',
-    },
-    {
-      date: '2024-11-22',
-      time: '11:30 AM',
-      patientName: 'Jane Smith',
-      doctor: 'Dr. Williams',
-    },
-    {
-      date: '2024-11-21',
-      time: '10:00 AM',
-      patientName: 'John Doe',
+      patientName: 'John Brooks',
       doctor: 'Dr. Smith',
     },
     {
@@ -250,6 +226,17 @@ export class DocterRoleComponent {
   //blogs
   showAddBlogForm = false;
   newBlog = { title: '', content: '' };
+  blogTxt = 'Add Blog';
+
+  onBlog() {
+    if (this.showAddBlogForm == false) {
+      this.showAddBlogForm = true;
+      this.blogTxt = 'Close Blog';
+    } else {
+      this.showAddBlogForm = false;
+      this.blogTxt = 'Add Blog';
+    }
+  }
 
   addBlog() {
     this.blogs.push({ ...this.newBlog });
@@ -301,6 +288,16 @@ export class DocterRoleComponent {
   };
 
   toggleState(type: 'chat' | 'comment' | 'payment' | 'appointment') {
+    for (const key in this.onState) {
+      if (key !== type) {
+        this.onState[key as 'chat' | 'comment' | 'payment' | 'appointment'] =
+          true;
+        this.btnStates[key as 'chat' | 'comment' | 'payment' | 'appointment'] =
+          '➕';
+      }
+    }
+
+    // Toggle the selected section
     this.onState[type] = !this.onState[type];
     this.btnStates[type] = this.onState[type] ? '➕' : '✖️';
   }
@@ -308,6 +305,7 @@ export class DocterRoleComponent {
   onChat() {
     this.toggleState('chat');
   }
+
   onComment() {
     this.toggleState('comment');
   }
@@ -319,6 +317,7 @@ export class DocterRoleComponent {
   onAppoint() {
     this.toggleState('appointment');
   }
+
   //contact
   email = 'support@gmail.com';
   contactForm = {
@@ -326,21 +325,24 @@ export class DocterRoleComponent {
     email: '',
     message: '',
   };
-
   onSubmit() {
-    // Here you would typically send the form data to the server
-    console.log('Form Submitted:', this.contactForm);
-    // Reset the form after submission
     this.contactForm = { name: '', email: '', message: '' };
   }
-
   //profile
+  onProfile = true;
   onEditing = false;
+  profileDiv = document.querySelector('.main') as HTMLElement;
+  profile() {
+    this.onProfile = !this.onProfile;
+  }
+
+  onClose() {
+    this.onProfile = true;
+  }
 
   onEdit() {
     this.onEditing = true;
   }
-
   offEdit() {
     this.onEditing = false;
   }

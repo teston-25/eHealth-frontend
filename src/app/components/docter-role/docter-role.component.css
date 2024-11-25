@@ -1,13 +1,13 @@
-/* .doctor-page {
-  margin-top: 100px;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-} */
+html {
+  scroll-behavior: smooth;
+}
 /* header */
 header {
-  padding: 10px;
+  padding: 5px 15px;
   background: #052c56;
+}
+header section nav {
+  list-style: none;
 }
 a {
   list-style: none;
@@ -27,9 +27,11 @@ a:focus {
 }
 .home-banner {
   margin: 20px;
-  padding-top: 60px;
+  padding-top: 90px;
 }
-
+.home-banner p {
+  margin-left: 20px;
+}
 .card {
   width: 300px;
   height: 220px;
@@ -147,6 +149,11 @@ a:focus {
 }
 
 /* notification */
+.notification-page {
+  background-image: url(../../../assets/images/notification-h.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+}
 .notification-header {
   margin: 0;
   font-size: 24px;
@@ -197,6 +204,7 @@ a:focus {
 .blog-form textarea,
 .blog-form button {
   padding: 10px;
+  margin: 5px 0px;
 }
 
 .blog-form input,
@@ -256,14 +264,14 @@ a:focus {
 /* profile-page*/
 /* Main profile page */
 .profile-page {
+  position: relative;
+  top: 10px;
   font-family: "Arial", sans-serif;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  background-image: url(../../../assets/images/pp.jpg);
   gap: 50px;
   padding: 30px;
-  background-color: #f8f9fa;
 }
 
 /* Profile Section */
@@ -277,7 +285,10 @@ a:focus {
   max-width: 800px;
   text-align: center;
 }
-
+.profile-page {
+  background-image: url(../../../assets/images/pp.jpg);
+  height: 73vh;
+}
 .profile-header {
   display: flex;
   flex-direction: column;

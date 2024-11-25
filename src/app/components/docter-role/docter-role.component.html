@@ -1,20 +1,20 @@
-<main>
-  <div class="doctor-page mt-24 w-full h-full">
-    <!-- Header -->
-    <header class="fixed top-0 w-full z-10 text-white">
-      <section class="flex justify-between items-center px-16 py-4">
-        <div class="logo text-2xl font-bold">
-          <h3>E-Health</h3>
-        </div>
-        <nav class="flex gap-6 items-center text-lg">
-          <a href="#" class="hover:underline">Home</a>
-          <a href="#" class="hover:underline">Appointment</a>
-          <a href="#" class="hover:underline">Chat</a>
-          <a href="#" class="hover:underline">Blog</a>
-          <a href="#" class="hover:underline">Notifications</a>
-          <a href="#" class="hover:underline">Contact Us</a>
-          <a
-            href="#"
+<div class="doctor-page mt-24 w-full h-full">
+  <!-- Header -->
+  <header class="fixed top-0 w-full z-10 text-white">
+    <section class="flex justify-between px-16 py-4 tab:items-center">
+      <div class="logo text-2xl font-bold">
+        <h3>E-Health</h3>
+      </div>
+      <nav class="text-lg mob:block mob: tab:flex tab:items-center tab:gap-6">
+        <li><a href="#" class="hover:underline">Home</a></li>
+        <li><a href="#" class="hover:underline">Appointment</a></li>
+        <li><a href="#" class="hover:underline">Chat</a></li>
+        <li><a href="#" class="hover:underline">Blog</a></li>
+        <li><a href="#" class="hover:underline">Notifications</a></li>
+        <li><a href="#" class="hover:underline">Contact Us</a></li>
+        <li>
+          <button
+            (click)="profile()"
             class="ppDoc transition-transform duration-200 hover:scale-125"
           >
             <svg
@@ -34,18 +34,173 @@
                 d="M256 0c68 0 132.89 26.95 180.96 75.04C485.05 122.99 512 188.11 512 256c0 68-26.95 132.89-75.04 180.96-23.49 23.56-51.72 42.58-83.15 55.6C323.59 505.08 290.54 512 256 512c-34.55 0-67.6-6.92-97.83-19.44l-.07-.03c-31.25-12.93-59.42-31.93-83.02-55.54l-.07-.07C26.9 388.82 0 324.03 0 256 0 116.78 112.74 0 256 0zm-52.73 332.87a67.668 67.668 0 01-5.6-6.74c-10.84-14.83-20.55-31.61-30.32-47.22-7.06-10.41-10.78-19.71-10.78-27.14 0-7.95 4.22-17.23 12.64-19.34-1.11-15.99-1.49-31.77-.74-48.88.37-4.08 1.12-8.17 2.23-12.27 4.84-17.1 16.73-30.86 31.61-40.15 5.2-3.35 10.78-5.94 17.1-8.18 10.78-4.09 5.57-20.45 17.48-20.82 27.88-.74 73.61 23.06 91.46 42.38 10.41 11.16 17.1 26.03 18.22 45.74l-1.12 44.03c5.2 1.49 8.55 4.84 10.04 10.04 1.49 5.95 0 14.13-5.2 25.67 0 .36-.38.36-.38.74-11.47 18.91-23.39 40.77-36.57 58.33-6.63 8.83-12.07 7.26-6.42 15.74 26.88 36.96 79.9 31.82 112.61 56.44 35.73-40.16 55.15-91.48 55.15-145.24 0-58.34-22.8-113.35-64.07-154.61v-.08C369.44 60.1 314.23 37.32 256 37.32 134.4 37.32 37.32 135.83 37.32 256c0 53.85 19.41 105.03 55.15 145.24 32.72-24.62 85.73-19.48 112.61-56.44 4.68-7.01 3.48-6.33-1.81-11.93z"
               />
             </svg>
-          </a>
-        </nav>
-      </section>
-    </header>
+          </button>
+        </li>
+      </nav>
+    </section>
+  </header>
+  <!-- profile page -->
+  <div class="container-profile" *ngIf="!onProfile">
+    <div class="profile-page relative">
+      <!-- Background Overlay -->
+      <div
+        class="prof-back fixed inset-0 bg-black bg-opacity-50 backdrop-blur-xl z-10"
+      ></div>
 
+      <div
+        class="profile z-20 bg-white rounded-lg shadow-lg mx-4 my-8 md:mx-16 md:my-16 p-6"
+      >
+        <button
+          (click)="onClose()"
+          class="absolute top-4 right-4 text-3xl font-semibold text-black transition-all duration-300 hover:text-red-600"
+        >
+          ✖️
+        </button>
+
+        <div class="profile-header text-center mb-6">
+          <div class="profile-text-container mb-4">
+            <h1 class="profile-title text-3xl font-semibold text-gray-800">
+              Doctor Profile
+            </h1>
+          </div>
+
+          <img
+            src=""
+            alt=""
+            class="profile-img rounded-full mx-auto w-32 h-32 border-4 border-gray-200 mb-4"
+          />
+
+          <div class="profile-text-container">
+            <h3 class="text-xl font-medium text-gray-700">{{ doctor }}</h3>
+            <h4 class="text-lg text-gray-600">{{ specialitiy }}</h4>
+          </div>
+        </div>
+
+        <button
+          (click)="onEdit()"
+          class="btn bg-blue-600 text-white py-2 px-4 rounded-full w-full md:w-auto hover:bg-blue-700 transition duration-300"
+          *ngIf="!onEditing"
+        >
+          Edit Profile
+        </button>
+      </div>
+
+      <!-- Edit Profile Form -->
+      <form
+        class="account relative z-20 mt-8 bg-white rounded-lg shadow-lg p-6"
+        *ngIf="onEditing"
+      >
+        <div class="account-header mb-6">
+          <h1 class="account-title text-2xl font-semibold text-gray-800">
+            Edit Profile
+          </h1>
+          <div class="btn-container mt-4 flex justify-between">
+            <button
+              class="btn-cancel text-gray-600 border border-gray-300 py-2 px-4 rounded-md hover:bg-gray-100 transition duration-300"
+              (click)="offEdit()"
+            >
+              Cancel
+            </button>
+            <button
+              class="btn-save bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition duration-300"
+            >
+              Save
+            </button>
+          </div>
+        </div>
+
+        <!-- Form Fields -->
+        <div class="account-edit mb-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="input-container">
+            <label class="block text-sm font-medium text-gray-600"
+              >First Name</label
+            >
+            <input
+              type="text"
+              placeholder="First Name"
+              class="mt-1 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            />
+          </div>
+          <div class="input-container">
+            <label class="block text-sm font-medium text-gray-600"
+              >Last Name</label
+            >
+            <input
+              type="text"
+              placeholder="Last Name"
+              class="mt-1 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            />
+          </div>
+        </div>
+
+        <div class="account-edit mb-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="input-container">
+            <label class="block text-sm font-medium text-gray-600">Email</label>
+            <input
+              type="email"
+              placeholder="Email"
+              class="mt-1 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            />
+          </div>
+          <div class="input-container">
+            <label class="block text-sm font-medium text-gray-600"
+              >Phone Number</label
+            >
+            <input
+              type="text"
+              placeholder="Phone number"
+              class="mt-1 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            />
+          </div>
+        </div>
+
+        <div class="account-edit mb-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="input-container">
+            <label class="block text-sm font-medium text-gray-600"
+              >Address</label
+            >
+            <textarea
+              placeholder="Address"
+              class="mt-1 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            ></textarea>
+          </div>
+          <div class="input-container">
+            <label class="block text-sm font-medium text-gray-600">Bio</label>
+            <textarea
+              placeholder="Bio"
+              class="mt-1 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="account-special mb-6">
+          <label class="block text-sm font-medium text-gray-600"
+            >Specialized</label
+          >
+          <select
+            class="mt-1 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none w-full"
+          >
+            <option value="general">General Health</option>
+            <option value="pediatrics">Pediatrics</option>
+            <option value="cardiology">Cardiology</option>
+            <option value="dermatology">Dermatology</option>
+            <option value="orthopedics">Orthopedics</option>
+          </select>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <main *ngIf="onProfile">
     <!-- Main Content -->
-    <div class="main bg-cover bg-fixed px-12 py-16">
+    <div class="main relative bg-cover bg-fixed px-12 py-16">
+      <!-- home page -->
       <div class="home-banner text-white">
         <h1 class="text-4xl font-bold mb-4">Welcome, {{ doctor }}</h1>
+        <br />
         <p class="text-xl">
-          Your dashboard for <br />
-          managing appointments and <br />
+          Your dashboard for managing appointments, <br />
+          Blogs and <br />
           communications
         </p>
       </div>
@@ -187,10 +342,10 @@
     >
       <h1 class="text-3xl font-bold">Doctor's Blog</h1>
       <button
-        (click)="showAddBlogForm = !showAddBlogForm"
+        (click)="onBlog()"
         class="px-4 py-2 bg-blue text-white font-medium rounded-lg shadow transition"
       >
-        Add Blog
+        {{ blogTxt }}
       </button>
     </div>
 
@@ -239,14 +394,11 @@
 
     <!-- notification-page -->
     <div class="notification-page block align-center min-h-screen bg-gray-50">
-      <!-- Notification Header -->
       <div
         class="notification-header bg-gray-100 px-6 py-4 text-3xl font-semibold text-gray-800 border-b-2 border-gray-300 shadow-md"
       >
         <h1>Notifications</h1>
       </div>
-
-      <!-- Notifications Section -->
       <div class="notifications block space-y-6 p-6 w-full max-w-4xl">
         <!-- Chat Notification -->
         <div
@@ -360,79 +512,6 @@
       </div>
     </div>
 
-    <div class="profile-page">
-      <div class="profile">
-        <div class="profile-header">
-          <div class="profile-text-container">
-            <h1 class="profile-title">Doctor Profile</h1>
-          </div>
-          <img src="" alt="" class="profile-img" />
-          <div class="profile-text-container">
-            <h3>{{ doctor }}</h3>
-            <h4>{{ specialitiy }}</h4>
-          </div>
-        </div>
-        <!-- <button class="btn" *ngIf="">edit Profile</button> -->
-        <button (click)="onEdit()" class="btn" *ngIf="!onEditing">
-          Edit Profile
-        </button>
-      </div>
-
-      <form class="account" *ngIf="onEditing">
-        <div class="account-header">
-          <h1 class="account-title">Edit Profile</h1>
-          <div class="btn-container">
-            <button class="btn-cancel" (click)="offEdit()">Cancel</button>
-            <button class="btn-save">Save</button>
-          </div>
-        </div>
-
-        <div class="account-edit" *ngIf="">
-          <div class="input-container">
-            <label>First Name</label>
-            <input type="text" placeholder="First Name" />
-          </div>
-          <div class="input-container">
-            <label>Last Name</label>
-            <input type="text" placeholder="Last Name" />
-          </div>
-        </div>
-
-        <div class="account-edit">
-          <div class="input-container">
-            <label>Email</label>
-            <input type="email" placeholder="Email" />
-          </div>
-          <div class="input-container">
-            <label>Phone Number</label>
-            <input type="text" placeholder="Phone number" />
-          </div>
-        </div>
-
-        <div class="account-edit">
-          <div class="input-container">
-            <label>Address</label>
-            <textarea placeholder="Address"></textarea>
-          </div>
-          <div class="input-container">
-            <label>Bio</label>
-            <textarea placeholder="bio"></textarea>
-          </div>
-        </div>
-
-        <div class="account-special">
-          <label>Specialized</label>
-          <select>
-            <option value="general">General Health</option>
-            <option value="pediatrics">Pediatrics</option>
-            <option value="cardiology">Cardiology</option>
-            <option value="dermatology">Dermatology</option>
-            <option value="orthopedics">Orthopedics</option>
-          </select>
-        </div>
-      </form>
-    </div>
-
     <div class="contact-us-page">
       <div class="contact-us-header">
         <h1>Contact Us</h1>
@@ -507,7 +586,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </main>
   <app-footer></app-footer>
-</main>
+</div>
 <!-- </div> -->
