@@ -1,61 +1,80 @@
-<div class="wrapper">
-  <div class="signup-wrapper">
-    <a href="#" class="close">✖️</a>
-    <div class="signup-header">Signup</div>
-    <div class="signup-form">
-      <div class="input-wrapper">
-        <input type="text" id="use" class="input-field" required />
-        <label for="name" class="label">First name</label>
-      </div>
-      <div class="input-wrapper">
-        <input type="text" id="usr" class="input-field" required />
-        <label for="name" class="label">Last name</label>
-        <i class="bx bx-user icon"></i>
-      </div>
-      <div class="input-wrapper">
-        <input type="email" id="uer" class="input-field" required />
-        <label for="number" class="label">Email</label>
-        <i class="bx bx-user icon"></i>
-      </div>
-      <div class="input-wrapper">
-        <input type="password" id="ser" class="input-field" required />
-        <label for="number" class="label">Password</label>
-        <i class="bx bx-user icon"></i>
-      </div>
-      <div class="input-wrapper">
-        <input type="password" id="ur" class="input-field" required />
-        <label for="number" class="label">Confirm Password</label>
-        <i class="bx bx-user icon"></i>
-      </div>
-      <div class="input-wrapper">
-        Role
-        <input type="radio" id="doctor" name="role" value="doctor" class="in" />
-        <label for="doctor">Doctor</label>
+<div
+  class="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-900 via-blueblack to-blue-900 text-white"
+>
+  <div
+    class="w-full max-w-md p-6 bg-white text-blueblack rounded-xl shadow-xl hover:shadow-2xl transition duration-500 transform hover:scale-105"
+  >
+    <h2 class="text-3xl font-extrabold text-center mb-6 text-blue-800">
+      Create Your Account
+    </h2>
+    <form>
+      <div class="mb-4 relative">
+        <label for="name" class="block text-sm font-medium mb-1"
+          >Full Name</label
+        >
         <input
-          type="radio"
-          id="patient"
-          name="role"
-          value="patient"
-          class="in"
+          type="text"
+          id="name"
+          placeholder="Enter your full name"
+          class="w-full px-4 py-3 bg-gray-50 border border-blue-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none shadow-sm"
         />
-        <label for="patient">Patient</label>
+        <span class="absolute right-3 top-3 text-blue-400">
+          <i class="fas fa-user"></i>
+        </span>
       </div>
-      <div class="input-wrapper">
-        Education
-        <input type="file" id="user" class="input-field" required />
-        <i class="bx bx-user icon"></i>
+      <div class="mb-4 relative">
+        <label for="email" class="block text-sm font-medium mb-1">Email</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter your email"
+          class="w-full px-4 py-3 bg-gray-50 border border-blue-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none shadow-sm"
+        />
+        <span class="absolute right-3 top-3 text-blue-400">
+          <i class="fas fa-envelope"></i>
+        </span>
       </div>
-      <div class="input-wrapper">
-        CV
-        <input type="file" id="user" class="input-field" required />
-        <i class="bx bx-user icon"></i>
+      <div class="mb-4 relative">
+        <label for="password" class="block text-sm font-medium mb-1"
+          >Password</label
+        >
+        <input
+          type="password"
+          id="password"
+          placeholder="Create a password"
+          class="w-full px-4 py-3 bg-gray-50 border border-blue-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none shadow-sm"
+        />
+        <span class="absolute right-3 top-3 text-blue-400">
+          <i class="fas fa-lock"></i>
+        </span>
       </div>
-      <div class="input-wrapper">
-        <input type="submit" class="input-login" value="Signup" />
+      <div class="mb-6">
+        <label for="role" class="block text-sm font-medium mb-2"
+          >Select Your Role</label
+        >
+        <select
+          id="role"
+          class="w-full px-4 py-3 bg-gray-50 border border-blue-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none shadow-sm"
+        >
+          <option value="doctor">Doctor</option>
+          <option value="patient">Patient</option>
+        </select>
       </div>
-      <div class="advice">
-        Already have an account?<a href="login">Login</a>
-      </div>
-    </div>
+      <button
+        type="button"
+        class="w-full py-3 px-4 bg-blueblack text-white rounded-lg hover:bg-blue-800 transition duration-300 transform hover:scale-105 shadow-lg"
+      >
+        Sign Up
+      </button>
+    </form>
+    <p class="text-sm text-center mt-4">
+      Already have an account?
+      <a
+        href="/login"
+        class="text-blue-500 hover:underline hover:text-blue-700"
+      >
+        Login
+      </a>
+    </p>
   </div>
 </div>

@@ -14,15 +14,14 @@ export class SignupComponent {
   password: string = '';
   confirmPassword: string = '';
 
-  onSubmit() {
-    if (this.password !== this.confirmPassword) {
-      alert('Passwords do not match!');
-      return;
-    }
+  signupData = {
+    name: '',
+    email: '',
+    password: '',
+    role: 'doctor', // Default role
+  };
 
-    console.log('Name:', this.name);
-    console.log('Email:', this.email);
-    console.log('Password:', this.password);
-    alert('Signup successful!');
+  handleSignup() {
+    console.log('Signup Data:', this.signupData);
   }
 }

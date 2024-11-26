@@ -1,58 +1,66 @@
-<div class="wrapper">
-  <div class="signup-wrapper">
-    <a href="#" class="close">✖️</a>
-    <div class="signup-header">Login</div>
-    <div class="signup-form">
-      <div class="input-wrapper">
+<div
+  class="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-800 via-blue-900 to-blueblack text-white"
+>
+  <div
+    class="w-full max-w-md p-6 bg-white text-blueblack rounded-xl shadow-lg hover:shadow-xl transition duration-500 transform hover:scale-105"
+  >
+    <h2 class="text-3xl font-extrabold text-center mb-6 text-blue-800">
+      Welcome Back!
+    </h2>
+    <form>
+      <div class="mb-4 relative">
+        <label for="email" class="block text-sm font-medium mb-1">Email</label>
         <input
           type="email"
-          id="user"
-          [(ngModel)]="loginAuth.email"
-          class="input-field"
-          required
+          id="email"
+          placeholder="Enter your email"
+          class="w-full px-4 py-3 bg-gray-50 border border-blue-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none shadow-sm"
         />
-        <label for="name" class="label">Email</label>
-        <i class="bx bx-user icon"></i>
+        <span class="absolute right-3 top-3 text-blue-400">
+          <i class="fas fa-envelope"></i>
+        </span>
       </div>
-      <div class="input-wrapper">
+      <div class="mb-6 relative">
+        <label for="password" class="block text-sm font-medium mb-1"
+          >Password</label
+        >
         <input
           type="password"
-          id="user"
-          [(ngModel)]="loginAuth.password"
-          class="input-field"
-          required
+          id="password"
+          placeholder="Enter your password"
+          class="w-full px-4 py-3 bg-gray-50 border border-blue-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none shadow-sm"
         />
-        <label for="number" class="label">Password</label>
-        <i class="bx bx-user icon"></i>
+        <span class="absolute right-3 top-3 text-blue-400">
+          <i class="fas fa-lock"></i>
+        </span>
       </div>
-      <div class="input-wrapper">
-        Role
-        <input type="radio" id="doctor" name="role" value="doctor" class="in" />
-        <label for="doctor">Doctor</label>
-        <input
-          type="radio"
-          id="patient"
-          name="role"
-          value="patient"
-          class="in"
-        />
-        <label for="patient">Patient</label>
+      <div class="mb-6">
+        <label for="role" class="block text-sm font-medium mb-2"
+          >Login As</label
+        >
+        <select
+          id="role"
+          class="w-full px-4 py-3 bg-gray-50 border border-blue-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none shadow-sm"
+        >
+          <option value="doctor">Doctor</option>
+          <option value="patient">Patient</option>
+        </select>
       </div>
-      <div class="login-check">
-        <div class="remember">
-          <input type="checkbox" id="remember-me" />
-          <label for="remember-me">Remember me</label>
-        </div>
-        <div class="forgot">
-          <a href="#">Forgot password?</a>
-        </div>
-      </div>
-      <div class="input-wrapper">
-        <input type="submit" class="input-login" value="Login" />
-      </div>
-      <div class="register">
-        <span>Don't have an account?<a href="signup">SignUp</a></span>
-      </div>
-    </div>
+      <button
+        type="button"
+        class="w-full py-3 px-4 bg-blueblack text-white rounded-lg hover:bg-blue-800 transition duration-300 transform hover:scale-105 shadow-lg"
+      >
+        Login
+      </button>
+    </form>
+    <p class="text-sm text-center mt-4">
+      Don't have an account?
+      <a
+        href="/signup"
+        class="text-blue-500 hover:underline hover:text-blue-700"
+      >
+        Sign Up
+      </a>
+    </p>
   </div>
 </div>

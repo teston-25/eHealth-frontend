@@ -9,8 +9,8 @@ import { SignupComponent } from './components/landing-page/signup/signup.compone
 import { BlogsComponent } from './components/landing-page/blogs/blogs.component';
 
 export const routes: Routes = [
-  { path: '', component: DocterRoleComponent },
-  // { path: '', component: MainBodyComponent } ,
+  // { path: '', component: DocterRoleComponent },
+  { path: '', component: MainBodyComponent },
   { path: 'about', component: AboutComponent },
   { path: 'blog', component: BlogsComponent },
   { path: 'contact', component: ContactComponent },

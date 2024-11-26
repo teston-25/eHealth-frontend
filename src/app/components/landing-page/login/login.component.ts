@@ -9,15 +9,14 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
-  email: string = '';
-  password: string = '';
+  loginData = {
+    email: '',
+    password: '',
+    role: 'doctor', // Default role
+  };
 
-  loginAuth = { email: '', password: '' };
-  login = { email: 'admin@gmail.com', password: 'admin' };
-  if() {}
-
-  onSubmit() {
-    console.log('Email:', this.email);
-    console.log('Password:', this.password);
+  handleLogin() {
+    console.log('Login Data:', this.loginData);
+    // Send loginData to the backend API for validation
   }
 }
