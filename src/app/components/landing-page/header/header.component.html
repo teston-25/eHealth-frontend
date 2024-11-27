@@ -6,35 +6,26 @@
   <section class="nav-bar">
     <ul>
       <li>
-        <a href="" id="home" (click)="handleNavigation($event, '/')">Home</a>
+        <a (click)="handleNavigation($event, '/')">Home</a>
       </li>
       <li>
-        <a routerLink="/blog" (click)="handleNavigation($event, '/blog')"
-          >Blog</a
-        >
+        <a (click)="handleNavigation($event, '/blog')">Blog</a>
+      </li>
+      <!-- <li>
+        <a (click)="handleNavigation($event, '/doc')">Doc</a>
+      </li> -->
+      <li><a (click)="onFaq()">FAQ</a></li>
+      <li>
+        <a (click)="handleNavigation($event, '/about')">About Us</a>
       </li>
       <li>
-        <a href="/doc" (click)="handleNavigation($event, '/doc')">Doc</a>
-      </li>
-      <li><a href="/faq" (click)="handleNavigation($event, '/faq')">FAQ</a></li>
-      <li>
-        <a href="/about" (click)="handleNavigation($event, '/about')"
-          >About Us</a
-        >
-      </li>
-      <li>
-        <a href="/contact" (click)="handleNavigation($event, '/contact')"
-          >Contact Us</a
-        >
+        <a (click)="handleNavigation($event, '/contact')">Contact Us</a>
       </li>
       <section class="auth">
-        <a
-          href="/login"
-          class="login"
-          (click)="handleNavigation($event, '/login')"
-          >Login</a
+        <a class="login" (click)="handleNavigation($event, '/login')">Login</a>
+        <a class="signup" (click)="handleNavigation($event, '/signup')"
+          >Signup</a
         >
-        <a href="/signup" class="signup">Signup</a>
       </section>
     </ul>
   </section>

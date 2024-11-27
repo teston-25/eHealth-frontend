@@ -10,9 +10,9 @@ import { BlogsComponent } from './components/landing-page/blogs/blogs.component'
 import { PatientRoleComponent } from './components/patient-role/patient-role.component';
 
 export const routes: Routes = [
-  // { path: '', component: DocterRoleComponent },
+  { path: '', component: DocterRoleComponent },
   // { path: '', component: PatientRoleComponent },
-  { path: '', component: MainBodyComponent },
+  // { path: '', component: MainBodyComponent },
   { path: 'about', component: AboutComponent },
   { path: 'blog', component: BlogsComponent },
   { path: 'contact', component: ContactComponent },

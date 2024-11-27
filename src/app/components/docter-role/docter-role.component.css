@@ -113,10 +113,6 @@ a:focus {
 }
 
 /* Chat Area Styles */
-.chat-history {
-  background-image: url(../../../assets/images/hoss.jpg);
-}
-
 .chat-history div p {
   padding: 10px;
   margin-bottom: 6px;

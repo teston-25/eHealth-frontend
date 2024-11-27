@@ -307,20 +307,8 @@ export class MainBodyComponent {
     });
   }
 
-  //login and signup
-  onLogin = true;
-  onSignup = true;
-  onCloseL() {
-    this.onLogin = false;
-    this.onSignup = false;
-  }
-  onCloseS() {
-    this.onLogin = false;
-    this.onSignup = false;
-  }
-  constructor(private location: Location) {}
+  //navbar view
+  faq = false;
 
-  goBack() {
-    this.location.back();
-  }
+  handleHome() {}
 }

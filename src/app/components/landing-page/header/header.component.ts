@@ -32,4 +32,12 @@ export class HeaderComponent {
       this.router.navigate([targetRoute]);
     }
   }
+
+  //navbar handle
+  home = true;
+  faq = false;
+  onFaq() {
+    this.faq = true;
+    this.home = false;
+  }
 }
