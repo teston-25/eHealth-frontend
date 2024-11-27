@@ -7,9 +7,11 @@ import { MainBodyComponent } from './components/landing-page/homepage/main-body.
 import { LoginComponent } from './components/landing-page/login/login.component';
 import { SignupComponent } from './components/landing-page/signup/signup.component';
 import { BlogsComponent } from './components/landing-page/blogs/blogs.component';
+import { PatientRoleComponent } from './components/patient-role/patient-role.component';
 
 export const routes: Routes = [
   // { path: '', component: DocterRoleComponent },
+  // { path: '', component: PatientRoleComponent },
   { path: '', component: MainBodyComponent },
   { path: 'about', component: AboutComponent },
   { path: 'blog', component: BlogsComponent },
@@ -18,4 +20,5 @@ export const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'faq', component: FaqComponent },
   { path: 'doc', component: DocterRoleComponent },
+  { path: 'pat', component: PatientRoleComponent },
 ];

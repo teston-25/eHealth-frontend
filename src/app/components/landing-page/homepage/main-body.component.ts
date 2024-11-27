@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FooterComponent } from '../footer/footer.component';
 import { HeaderComponent } from '../header/header.component';
 import { FormsModule } from '@angular/forms';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-main-body',
@@ -304,5 +305,22 @@ export class MainBodyComponent {
 
       return matchesName && matchesSpecialty;
     });
+  }
+
+  //login and signup
+  onLogin = true;
+  onSignup = true;
+  onCloseL() {
+    this.onLogin = false;
+    this.onSignup = false;
+  }
+  onCloseS() {
+    this.onLogin = false;
+    this.onSignup = false;
+  }
+  constructor(private location: Location) {}
+
+  goBack() {
+    this.location.back();
   }
 }

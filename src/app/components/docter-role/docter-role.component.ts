@@ -223,6 +223,20 @@ export class DocterRoleComponent {
     },
   ];
 
+  //nav-bar view
+  scrollTo(sectionId: string): void {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const elementPosition =
+        element.getBoundingClientRect().top + window.pageYOffset;
+
+      window.scrollTo({
+        top: elementPosition - 75, // Adjust the offset here
+        behavior: 'smooth',
+      });
+    }
+  }
+
   //blogs
   showAddBlogForm = false;
   newBlog = { title: '', content: '' };

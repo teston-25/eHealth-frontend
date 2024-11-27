@@ -6,12 +6,30 @@
         <h3>E-Health</h3>
       </div>
       <nav class="text-lg mob:block mob: tab:flex tab:items-center tab:gap-6">
-        <li><a href="#" class="hover:underline">Home</a></li>
-        <li><a href="#" class="hover:underline">Appointment</a></li>
-        <li><a href="#" class="hover:underline">Chat</a></li>
-        <li><a href="#" class="hover:underline">Blog</a></li>
-        <li><a href="#" class="hover:underline">Notifications</a></li>
-        <li><a href="#" class="hover:underline">Contact Us</a></li>
+        <li>
+          <a href="javascript:void(0)" (click)="scrollTo('home')">Home</a>
+        </li>
+        <li>
+          <a href="javascript:void(0)" (click)="scrollTo('appointment')"
+            >Appointment</a
+          >
+        </li>
+        <li>
+          <a href="javascript:void(0)" (click)="scrollTo('chat')">Chat</a>
+        </li>
+        <li>
+          <a href="javascript:void(0)" (click)="scrollTo('blog')">Blog</a>
+        </li>
+        <li>
+          <a href="javascript:void(0)" (click)="scrollTo('notification')"
+            >Notifications</a
+          >
+        </li>
+        <li>
+          <a href="javascript:void(0)" (click)="scrollTo('contact')"
+            >Contact Us</a
+          >
+        </li>
         <li>
           <button
             (click)="profile()"
@@ -193,7 +211,7 @@
 
   <main *ngIf="onProfile">
     <!-- Main Content -->
-    <div class="main relative bg-cover bg-fixed px-12 py-16">
+    <div id="home" class="main relative bg-cover bg-fixed px-12 py-16">
       <!-- home page -->
       <div class="home-banner text-white">
         <h1 class="text-4xl font-bold mb-4">Welcome, {{ doctor }}</h1>
@@ -209,18 +227,21 @@
         class="quick-links flex flex-wrap justify-center gap-8 mt-12 m-20 text-center align-center"
       >
         <div
+          (click)="scrollTo('appointment')"
           class="card bg-blue-600/50 text-white border shadow-md rounded-lg p-4 transition-transform duration-300 hover:scale-105 hover:bg-white hover:text-blue-500 transition-colors duration-300"
         >
           <h3 class="text-xl font-bold mb-2">Appointments</h3>
           <p>View and manage your upcoming appointments</p>
         </div>
         <div
+          (click)="scrollTo('notification')"
           class="card bg-blue-600/50 text-white border border-gray-300 shadow-md rounded-lg p-4 text-center transition-transform duration-300 hover:scale-105 hover:bg-white hover:text-blue-500 transition-colors duration-300"
         >
           <h3 class="text-xl font-bold mb-2">Notifications</h3>
           <p>Check your latest updates</p>
         </div>
         <div
+          (click)="scrollTo('chat')"
           class="card bg-blue-600/50 text-white border border-gray-300 shadow-md rounded-lg p-4 text-center transition-transform duration-300 hover:scale-105 hover:bg-white hover:text-blue-500 transition-colors duration-300"
         >
           <h3 class="text-xl font-bold mb-2">Chat</h3>
@@ -229,7 +250,10 @@
       </div>
     </div>
 
-    <div class="main-appointment bg-white shadow-lg rounded-lg overflow-hidden">
+    <div
+      id="appointment"
+      class="main-appointment bg-white shadow-lg rounded-lg overflow-hidden"
+    >
       <!-- Appointment Header -->
       <div
         class="appointment-header flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-500 to-indigo-500 text-white"
@@ -269,6 +293,7 @@
 
     <!-- chat-page -->
     <div
+      id="chat"
       class="chat-container flex border border-gray-300 rounded overflow-hidden"
     >
       <!-- Left Sidebar -->
@@ -338,6 +363,7 @@
 
     <!-- blog-page -->
     <div
+      id="blog"
       class="blog-header bg-gradient-to-r from-blue-500 to-indigo-500 text-white p-6 flex justify-between items-center rounded-t-lg shadow-lg"
     >
       <h1 class="text-3xl font-bold">Doctor's Blog</h1>
@@ -393,7 +419,10 @@
     <br /><br />
 
     <!-- notification-page -->
-    <div class="notification-page block align-center min-h-screen bg-gray-50">
+    <div
+      id="notification"
+      class="notification-page block align-center min-h-screen bg-gray-50"
+    >
       <div
         class="notification-header bg-gray-100 px-6 py-4 text-3xl font-bold text-gray-800 border-b-2 border-gray-300 shadow-md"
       >
@@ -512,7 +541,8 @@
       </div>
     </div>
 
-    <div class="contact-us-page">
+    <!-- contact us page -->
+    <div id="contact" class="contact-us-page">
       <div class="contact-us-header">
         <h1>Contact Us</h1>
         <p>
