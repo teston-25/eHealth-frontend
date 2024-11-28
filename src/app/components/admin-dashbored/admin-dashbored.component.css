@@ -1,0 +1,13 @@
+.nav li {
+  padding: 30px;
+}
+
+.active {
+  color: rgb(99, 239, 99);
+  background-color: white;
+  padding: 10px 40px;
+  position: absolute;
+  top: 25px;
+  right: 0;
+  border-radius: 10px 0px 0px 10px;
+}

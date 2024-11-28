@@ -2,61 +2,25 @@
 <div class="main-body">
   <app-header></app-header>
   <main>
-    <h1 class="intro">
-      Welcome to <span class="lower">e</span>Health Platform
-    </h1>
-    <div class="list-search">
-      <div class="inp-container">
-        <input
-          type="text"
-          placeholder="Search for doctors here"
-          class="search-eng"
-          (input)="handleInput($event)"
-          (input)="filterDoctors()"
-        />
-        <ul class="list-table">
-          <li *ngIf="filteredDoctors.length === 0 && searchName">
-            No matching doctors found.
-          </li>
-          <li *ngFor="let doctor of filteredDoctors">
-            <span style="font-weight: 500">{{ doctor.name }}</span> -
-            {{ doctor.specialty }} ({{ doctor.location }})
-            <hr />
-          </li>
-        </ul>
-      </div>
-      <select
-        [(ngModel)]="selectedSpecialty"
-        (change)="filterDoctors()"
-        class="select-cont"
-      >
-        <option value="" disabled selected>Select Specialties</option>
-        <option value="all">All Specialties</option>
-        <option *ngFor="let specialty of speciality" [value]="specialty">
-          {{ specialty }}
-        </option>
-      </select>
-    </div>
+    <app-home></app-home>
+    <br /><br />
 
-    <div class="list-topDoctor">
-      <h1>Top Doctors</h1>
-      <button (click)="Dtrs()" class="btn-view">{{ text_doctors }}</button>
-      <ul class="doc-container">
-        <li *ngFor="let dtr of doctors">
-          <h2>{{ dtr.name }}</h2>
-          <h3>{{ dtr.specialty }}</h3>
-          <h4>{{ dtr.experience }} year Experience</h4>
-          <p>{{ dtr.location }}</p>
-        </li>
-      </ul>
-    </div>
+    <!-- blog page -->
+    <app-blogs></app-blogs>
+    <br /><br />
 
-    <br />
+    <!-- FAQ page -->
+    <app-faq></app-faq>
+    <br /><br />
 
-    <section class="btn">
-      <button class="btn-signup"><a href="/signup">Sign-Up</a></button>
-    </section>
+    <!-- About Us page -->
+    <app-about></app-about>
+    <br /><br />
+
+    <!-- Contact us page -->
+    <app-contact></app-contact>
   </main>
   <hr />
+
   <app-footer></app-footer>
 </div>

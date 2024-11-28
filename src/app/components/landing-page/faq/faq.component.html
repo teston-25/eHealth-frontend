@@ -1,0 +1,36 @@
+<div
+  id="faq"
+  class="faq-container max-w-4xl mx-auto py-10 px-6 bg-gray-50 rounded-lg shadow-md"
+>
+  <h1 class="text-3xl font-bold text-center text-gray-800 mb-8">
+    Frequently Asked Questions
+  </h1>
+
+  <!-- FAQ Section -->
+  <div *ngFor="let faq of faqs" class="faq-item border-b border-gray-300 py-4">
+    <h2
+      class="text-lg font-semibold text-gray-700 cursor-pointer flex justify-between items-center"
+      (click)="faq.open = !faq.open"
+    >
+      {{ faq.question }}
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-5 w-5 transform transition-transform"
+        [ngClass]="{ 'rotate-180': faq.open }"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M19 9l-7 7-7-7"
+        />
+      </svg>
+    </h2>
+    <p *ngIf="faq.open" class="text-gray-600 mt-2">
+      {{ faq.answer }}
+    </p>
+  </div>
+</div>

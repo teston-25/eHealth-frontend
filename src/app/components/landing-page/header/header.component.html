@@ -1,31 +1,26 @@
-<nav>
+<nav class="align-center fixed top-0 right-0 left-0 z-20">
   <section class="logo">
     <h3>E-Health</h3>
   </section>
 
-  <section class="nav-bar">
-    <ul>
+  <section class="nav-bar align-center">
+    <ul class="mob:block tab:flex">
       <li>
-        <a (click)="handleNavigation($event, '/')">Home</a>
+        <a (click)="scrollTo('home')">Home</a>
       </li>
       <li>
-        <a (click)="handleNavigation($event, '/blog')">Blog</a>
+        <a (click)="scrollTo('blog')">Blog</a>
       </li>
-      <!-- <li>
-        <a (click)="handleNavigation($event, '/doc')">Doc</a>
-      </li> -->
-      <li><a (click)="onFaq()">FAQ</a></li>
+      <li><a (click)="scrollTo('faq')">FAQ</a></li>
       <li>
-        <a (click)="handleNavigation($event, '/about')">About Us</a>
+        <a (click)="scrollTo('about')">About Us</a>
       </li>
       <li>
-        <a (click)="handleNavigation($event, '/contact')">Contact Us</a>
+        <a (click)="scrollTo('contact')">Contact Us</a>
       </li>
       <section class="auth">
-        <a class="login" (click)="handleNavigation($event, '/login')">Login</a>
-        <a class="signup" (click)="handleNavigation($event, '/signup')"
-          >Signup</a
-        >
+        <a class="login" href="./login">Login</a>
+        <a class="signup" href="./signup">Signup</a>
       </section>
     </ul>
   </section>

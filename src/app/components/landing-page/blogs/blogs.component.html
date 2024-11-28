@@ -1,28 +1,51 @@
-<app-header></app-header>
-<main>
-  <div class="blog-container">
-    <h1 class="header-blog">Blogs page</h1>
-    <hr />
+<div id="blog" class="blog-container max-w-12xl mx-auto p-6 bg-gray-50">
+  <h1 class="header-blog text-3xl font-bold text-center text-gray-800 mb-4">
+    Blogs
+  </h1>
+  <hr class="mb-6 border-gray-300" />
+  <div
+    ng-app="HealthBlogApp"
+    ng-controller="BlogController"
+    class="blog-container space-y-8"
+  >
     <div
-      ng-app="HealthBlogApp"
-      ng-controller="BlogController"
-      class="blog-container"
+      class="blog-post bg-white shadow-lg rounded-lg p-6 hover:shadow-2xl transition-shadow duration-300"
+      *ngFor="let post of blogPosts"
     >
-      <div class="blog-post" *ngFor="let post of blogPosts">
-        <h2>{{ post.title }}</h2>
-        <p class="author-date">
-          By <strong>{{ post.author }}</strong> on {{ post.date }}
-        </p>
-        <img alt="{{ post.title }}" class="blog-image" />
-        <p class="content">{{ post.content }}</p>
-        <ul class="tags">
-          <li *ngFor="let tag of post.tags">#{{ tag }}</li>
-        </ul>
-        <button class="read-more">Read More</button>
-        <button class="comment">Comment</button>
+      <h2 class="text-2xl font-semibold text-gray-900 mb-2">
+        {{ post.title }}
+      </h2>
+      <p class="author-date text-sm text-gray-500 mb-4">
+        By <strong class="text-gray-700">{{ post.author }}</strong> on
+        {{ post.date }}
+      </p>
+      <img
+        alt="{{ post.title }}"
+        class="blog-image w-full h-60 object-cover rounded-md mb-4"
+      />
+      <p class="content text-gray-700 leading-relaxed mb-4">
+        {{ post.content }}
+      </p>
+      <ul class="tags flex flex-wrap gap-2 mb-4">
+        <li
+          *ngFor="let tag of post.tags"
+          class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm"
+        >
+          #{{ tag }}
+        </li>
+      </ul>
+      <div class="flex justify-between">
+        <button
+          class="read-more bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
+        >
+          Read More
+        </button>
+        <button
+          class="comment bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300 transition"
+        >
+          Comment
+        </button>
       </div>
     </div>
   </div>
-</main>
-<hr />
-<app-footer></app-footer>
+</div>

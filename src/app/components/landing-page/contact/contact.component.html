@@ -1,0 +1,96 @@
+<div id="contact" class="contact-us-page bg-gray-50 py-16 px-6">
+  <!-- Header Section -->
+  <div class="contact-us-header text-center mb-12">
+    <h1 class="text-4xl font-bold text-gray-800">Contact Us</h1>
+    <p class="text-gray-600 mt-4">
+      If you have any questions or need assistance, feel free to reach out to
+      us!
+    </p>
+  </div>
+
+  <!-- Contact Page Content -->
+  <div class="contact-page flex flex-wrap justify-center gap-12 items-start">
+    <!-- Contact Form -->
+    <div
+      class="contact-form bg-white shadow-xl rounded-lg p-8 w-full max-w-xl transition-transform hover:scale-105"
+    >
+      <h2 class="text-2xl font-semibold text-center text-gray-800 mb-6">
+        Send us a Message
+      </h2>
+      <form (ngSubmit)="onSubmit()" class="space-y-6">
+        <!-- Name Field -->
+        <div class="form-group">
+          <label for="name" class="text-gray-700 font-medium">Name</label>
+          <input
+            type="text"
+            id="name"
+            [(ngModel)]="contactForm.name"
+            name="name"
+            required
+            placeholder="Your Full Name"
+            class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
+          />
+        </div>
+
+        <!-- Email Field -->
+        <div class="form-group">
+          <label for="email" class="text-gray-700 font-medium">Email</label>
+          <input
+            type="email"
+            id="email"
+            [(ngModel)]="contactForm.email"
+            name="email"
+            required
+            placeholder="Your Email Address"
+            class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
+          />
+        </div>
+
+        <!-- Message Field -->
+        <div class="form-group">
+          <label for="message" class="text-gray-700 font-medium">Message</label>
+          <textarea
+            id="message"
+            [(ngModel)]="contactForm.message"
+            name="message"
+            required
+            placeholder="Write your message here..."
+            class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
+          ></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <button
+          type="submit"
+          class="btn-submit w-full bg-blue-500 text-white py-2 rounded-lg font-medium hover:bg-blue-600 transition duration-200"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+
+    <!-- Contact Details -->
+    <div
+      class="contact-details bg-white shadow-xl rounded-lg p-8 w-full max-w-xl transition-transform hover:scale-105"
+    >
+      <h2 class="text-2xl font-semibold text-center text-gray-800 mb-6">
+        Our Contact Information
+      </h2>
+      <div class="contact-info space-y-4 text-gray-700">
+        <p class="flex items-center">
+          <span class="material-icons text-blue-500 mr-2">phone</span>
+          <strong class="text-gray-800">Phone:</strong> +1 (123) 456-7890
+        </p>
+        <p class="flex items-center">
+          <span class="material-icons text-blue-500 mr-2">email</span>
+          <strong class="text-gray-800">Email:</strong> {{ email }}
+        </p>
+        <p class="flex items-center">
+          <span class="material-icons text-blue-500 mr-2">location_on</span>
+          <strong class="text-gray-800">Address:</strong> 123 Main Street, Addis
+          Ababa, Ethiopia
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

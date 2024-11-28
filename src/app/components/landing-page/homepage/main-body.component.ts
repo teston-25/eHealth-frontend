@@ -1,14 +1,28 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FooterComponent } from '../footer/footer.component';
-import { HeaderComponent } from '../header/header.component';
 import { FormsModule } from '@angular/forms';
-import { Location } from '@angular/common';
+import { BlogsComponent } from '../blogs/blogs.component';
+import { FaqComponent } from '../faq/faq.component';
+import { AboutComponent } from '../about/about.component';
+import { ContactComponent } from '../contact/contact.component';
+import { HeaderComponent } from '../header/header.component';
+import { HomeComponent } from '../home/home.component';
 
 @Component({
   selector: 'app-main-body',
   standalone: true,
-  imports: [CommonModule, FooterComponent, HeaderComponent, FormsModule],
+  imports: [
+    CommonModule,
+    FooterComponent,
+    FormsModule,
+    HeaderComponent,
+    HomeComponent,
+    BlogsComponent,
+    FaqComponent,
+    AboutComponent,
+    ContactComponent,
+  ],
   templateUrl: './main-body.component.html',
   styleUrl: './main-body.component.css',
 })
@@ -306,9 +320,4 @@ export class MainBodyComponent {
       return matchesName && matchesSpecialty;
     });
   }
-
-  //navbar view
-  faq = false;
-
-  handleHome() {}
 }

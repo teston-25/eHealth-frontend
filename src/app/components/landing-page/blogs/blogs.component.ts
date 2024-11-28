@@ -1,13 +1,11 @@
-import { Component } from '@angular/core';
-import { FooterComponent } from '../footer/footer.component';
-import { HeaderComponent } from '../header/header.component';
-import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-blogs',
   standalone: true,
-  imports: [FooterComponent, HeaderComponent, FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './blogs.component.html',
   styleUrl: './blogs.component.css',
 })

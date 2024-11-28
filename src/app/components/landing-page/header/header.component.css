@@ -9,6 +9,7 @@ nav {
   padding: 13px;
   background-color: #052c56;
   color: white;
+  margin-bottom: 100px;
 }
 .nav-bar ul {
   display: flex;

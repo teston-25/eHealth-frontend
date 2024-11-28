@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* faq page */
+.faq-container {
+  @apply bg-gray-50 shadow-md rounded-lg;
+}
+
+.faq-item {
+  @apply border-b border-gray-300 py-4;
+}
+
+/* about us */
+.about-container {
+  @apply bg-gray-50 shadow-md rounded-lg;
+}
+
+.team-member {
+  @apply text-center p-4 bg-white rounded-lg shadow;
+}
+
+.team-member:hover {
+  @apply shadow-lg;
+}

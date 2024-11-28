@@ -14,30 +14,17 @@ import {
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-  currentRoute: string = '';
+  //navigation bar
+  scrollTo(sectionId: string): void {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const elementPosition =
+        element.getBoundingClientRect().top + window.pageYOffset;
 
-  constructor(private router: Router) {
-    // Track the current route to avoid redundant navigation
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this.currentRoute = event.url;
-      }
-    });
-  }
-
-  handleNavigation(event: Event, targetRoute: string): void {
-    event.preventDefault(); // Prevent default anchor behavior
-    if (this.currentRoute !== targetRoute) {
-      // Only navigate if the target route is different
-      this.router.navigate([targetRoute]);
+      window.scrollTo({
+        top: elementPosition - 75, // Adjust the offset here
+        behavior: 'smooth',
+      });
     }
-  }
-
-  //navbar handle
-  home = true;
-  faq = false;
-  onFaq() {
-    this.faq = true;
-    this.home = false;
   }
 }
