@@ -1,40 +1,38 @@
 .logo {
   font-size: 24px;
   font-weight: bold;
+  position: relative;
 }
 nav {
   display: flex;
   justify-content: space-between;
-  font-size: 18px;
+  /* font-size: 18px; */
   padding: 13px;
   background-color: #052c56;
   color: white;
   margin-bottom: 100px;
 }
+.btn-ham,
+.btn-close {
+  position: absolute;
+  top: 25px;
+  right: 15px;
+}
 .nav-bar ul {
-  display: flex;
-  gap: 18px;
   align-items: center;
   color: white;
+  /* padding-right: 40px; */
 }
 
 .nav-bar ul li,
 a {
   list-style: none;
   text-decoration: none;
-  margin: 5px;
+  margin: 0px 5px;
 }
 a:hover,
 a:focus {
   text-decoration: underline;
-}
-.auth {
-  display: flex;
-  gap: 10px;
-  font-size: 16px;
-}
-.auth {
-  color: white;
 }
 .login,
 .signup {
@@ -42,13 +40,14 @@ a:focus {
   background: white;
   border: none;
   border-radius: 10px;
-  padding: 7px;
+  padding: 0px 7px;
+  margin-top: 15px;
 }
 
 .login:hover,
 .signup:hover {
-  /* border: 0.5px solid #007bff; */
   color: white;
   background-color: #007bff;
-  transition: 0.4s linear;
+  transition: 0.2s linear;
+  text-decoration: none;
 }

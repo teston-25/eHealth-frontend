@@ -1,87 +1,15 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { FooterComponent } from '../landing-page/footer/footer.component';
 
 @Component({
-  selector: 'app-docter-role',
+  selector: 'app-notification',
   standalone: true,
-  imports: [FormsModule, CommonModule, FooterComponent],
-  templateUrl: './docter-role.component.html',
-  styleUrl: './docter-role.component.css',
+  imports: [CommonModule, FormsModule],
+  templateUrl: './notification.component.html',
+  styleUrl: './notification.component.css',
 })
-export class DocterRoleComponent {
-  doctor = 'Dr. X';
-  specialitiy = 'Cardiology';
-  comments = [{ title: 'test', content: 'teston is testing' }];
-  appointments = [
-    {
-      date: '2024-11-21',
-      time: '10:00 AM',
-      patientName: 'John Brooks',
-      doctor: 'Dr. Smith',
-    },
-    {
-      date: '2024-11-22',
-      time: '11:30 AM',
-      patientName: 'Jane Smith',
-      doctor: 'Dr. Williams',
-    },
-    {
-      date: '2024-11-21',
-      time: '10:00 AM',
-      patientName: 'John Brooks',
-      doctor: 'Dr. Smith',
-    },
-    {
-      date: '2024-11-22',
-      time: '11:30 AM',
-      patientName: 'Jane Smith',
-      doctor: 'Dr. Williams',
-    },
-  ];
-
-  blogs = [
-    {
-      title: 'Managing Diabetes',
-      content: 'Tips for managing diabetes effectively...',
-    },
-    {
-      title: 'Heart Health',
-      content: 'Keep your heart healthy with these simple steps...',
-    },
-    {
-      title: 'Managing Diabetes',
-      content: 'Tips for managing diabetes effectively...',
-    },
-  ];
-
-  contacts = [
-    {
-      id: 1,
-      name: 'Dr. Sarah',
-      specialty: 'Cardiologist',
-      profilePic: 'sarah.png',
-    },
-    {
-      id: 2,
-      name: 'John Mike',
-      specialty: 'Patient',
-      profilePic: 'john.png',
-    },
-    {
-      id: 3,
-      name: 'Mike Vanico',
-      specialty: 'Patient',
-      profilePic: 'mike.png',
-    },
-  ];
-
-  messages = [
-    { sender: 'Dr. Sarah', text: 'Hello, how can I help you?' },
-    { sender: 'Me', text: 'I have a question about my appointment.' },
-  ];
-
+export class NotificationDComponent {
   chatNotifications = [
     {
       userId: 1,
@@ -223,70 +151,6 @@ export class DocterRoleComponent {
     },
   ];
 
-  //nav-bar view
-  scrollTo(sectionId: string): void {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const elementPosition =
-        element.getBoundingClientRect().top + window.pageYOffset;
-
-      window.scrollTo({
-        top: elementPosition - 75, // Adjust the offset here
-        behavior: 'smooth',
-      });
-    }
-  }
-
-  //blogs
-  showAddBlogForm = false;
-  newBlog = { title: '', content: '' };
-  blogTxt = 'Add Blog';
-
-  onBlog() {
-    if (this.showAddBlogForm == false) {
-      this.showAddBlogForm = true;
-      this.blogTxt = 'Close Blog';
-    } else {
-      this.showAddBlogForm = false;
-      this.blogTxt = 'Add Blog';
-    }
-  }
-
-  addBlog() {
-    this.blogs.push({ ...this.newBlog });
-    this.newBlog = { title: '', content: '' };
-    this.showAddBlogForm = false;
-  }
-
-  //chat
-  selectedContact: any = null;
-  newMessage: string = '';
-  searchQuery: string = '';
-
-  ngOnInit(): void {}
-
-  selectContact(contact: any): void {
-    this.selectedContact = contact;
-    this.messages = [
-      { sender: contact.name, text: `Hi, this is ${contact.name}` },
-    ];
-  }
-
-  // Filter contacts based on the search query
-  get filteredContacts() {
-    return this.contacts.filter((contact) =>
-      contact.name.toLowerCase().includes(this.searchQuery.toLowerCase())
-    );
-  }
-
-  // Send a message and add it to the chat history
-  sendMessage(): void {
-    if (this.newMessage.trim()) {
-      this.messages.push({ sender: 'Me', text: this.newMessage });
-      this.newMessage = '';
-    }
-  }
-  //Notification
   btnStates = {
     chat: '➕',
     comment: '➕',
@@ -330,34 +194,5 @@ export class DocterRoleComponent {
 
   onAppoint() {
     this.toggleState('appointment');
-  }
-
-  //contact
-  email = 'support@gmail.com';
-  contactForm = {
-    name: '',
-    email: '',
-    message: '',
-  };
-  onSubmit() {
-    this.contactForm = { name: '', email: '', message: '' };
-  }
-  //profile
-  onProfile = true;
-  onEditing = false;
-  profileDiv = document.querySelector('.main') as HTMLElement;
-  profile() {
-    this.onProfile = !this.onProfile;
-  }
-
-  onClose() {
-    this.onProfile = true;
-  }
-
-  onEdit() {
-    this.onEditing = true;
-  }
-  offEdit() {
-    this.onEditing = false;
   }
 }

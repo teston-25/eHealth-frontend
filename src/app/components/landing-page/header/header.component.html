@@ -1,27 +1,60 @@
-<nav class="align-center fixed top-0 right-0 left-0 z-20">
+<nav
+  class="align-center fixed top-0 right-0 left-0 z-20 mob:relative tab:fixed"
+>
   <section class="logo">
     <h3>E-Health</h3>
   </section>
 
   <section class="nav-bar align-center">
-    <ul class="mob:block tab:flex">
-      <li>
-        <a (click)="scrollTo('home')">Home</a>
-      </li>
-      <li>
-        <a (click)="scrollTo('blog')">Blog</a>
-      </li>
-      <li><a (click)="scrollTo('faq')">FAQ</a></li>
-      <li>
-        <a (click)="scrollTo('about')">About Us</a>
-      </li>
-      <li>
-        <a (click)="scrollTo('contact')">Contact Us</a>
-      </li>
-      <section class="auth">
-        <a class="login" href="./login">Login</a>
-        <a class="signup" href="./signup">Signup</a>
+    <section class="nav-toggle">
+      <section class="toggle-btn mob:active tab:hidden">
+        <!--ham btn  -->
+        <button id="btnham" class="btn-ham active" (click)="onMenu()">
+          <svg
+            class="w-6 h-6 block transition ease-in duration-600"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+        </button>
+        <!-- close btn -->
+        <button id="btnclose" class="btn-close hidden" (click)="offMenu()">
+          <svg
+            class="w-6 h-6 transition ease-out duration-600"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+            />
+          </svg>
+        </button>
       </section>
-    </ul>
+      <ul
+        class="menu px-4 text-lg mob:mt-12 mob:absolute mob:top-4 mob:right-4 tab:mt-0 tab:flex tab:mt-0 tab:items-center tab:gap-6 hidden"
+      >
+        <li><a (click)="scrollTo('home')">Home</a></li>
+        <li><a (click)="scrollTo('blog')">Blog</a></li>
+        <li><a (click)="scrollTo('faq')">FAQ</a></li>
+        <li><a (click)="scrollTo('about')">About Us</a></li>
+        <li><a (click)="scrollTo('contact')">Contact Us</a></li>
+        <li><a class="login mob:m-0 tab:m-2" href="./login">Login</a></li>
+        <li><a class="signup" href="./signup">Signup</a></li>
+      </ul>
+    </section>
   </section>
 </nav>

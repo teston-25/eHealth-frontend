@@ -1,0 +1,53 @@
+<div
+  id="blog"
+  class="blog-header bg-gradient-to-r from-blue-500 to-indigo-500 text-white p-6 flex justify-between items-center rounded-t-lg shadow-lg"
+>
+  <h1 class="text-3xl font-bold">Doctor's Blog</h1>
+  <button
+    (click)="onBlog()"
+    class="px-4 py-2 bg-blue text-white font-medium rounded-lg shadow transition"
+  >
+    {{ blogTxt }}
+  </button>
+</div>
+
+<div
+  *ngIf="showAddBlogForm"
+  class="blog-form p-6 bg-white shadow-lg rounded-b-lg border-t-2 border-gray-300"
+>
+  <form (ngSubmit)="addBlog()">
+    <input
+      type="text"
+      placeholder="Title"
+      [(ngModel)]="newBlog.title"
+      name="title"
+      required
+      class="w-full p-4 border border-gray-300 rounded-lg mb-4 text-lg focus:outline-none focus:ring-2 focus:ring-gray-500"
+    />
+    <textarea
+      placeholder="Content"
+      [(ngModel)]="newBlog.content"
+      name="content"
+      required
+      class="w-full p-4 border border-gray-300 rounded-lg mb-4 text-lg focus:outline-none focus:ring-2 focus:ring-gray-200"
+    ></textarea>
+    <button
+      type="submit"
+      class="w-full py-3 bg-green-500 text-white font-medium rounded-lg shadow hover:bg-green-600 transition"
+    >
+      Post
+    </button>
+  </form>
+</div>
+
+<div class="blog-list p-6">
+  <div
+    *ngFor="let blog of blogs"
+    class="blog-post p-6 bg-white rounded-lg shadow-lg hover:shadow-2xl transition"
+  >
+    <section class="img bg-gray-300 h-40"></section>
+    <h1 class="text-xl font-semibold text-gray-800">{{ doctor }}</h1>
+    <h3 class="text-2xl font-bold text-gray-900">{{ blog.title }}</h3>
+    <p class="text-gray-700">{{ blog.content }}</p>
+  </div>
+</div>
