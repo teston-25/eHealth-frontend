@@ -2,16 +2,14 @@
   <h1
     class="intro bg-white/50 text-white/90 align-center p-6 rounded-lg shadow-lg mob:text-lg tab:text-2xl desk:text-4xl text-center"
   >
-    <span class="block"> Welcome </span>
-    <span class="block"> to </span>
-    <span class="block"> eHealth Platform </span>
+    Welcome to eHealth Platform
   </h1>
 
   <div
-    class="list-search flex flex-col tab:flex-row items-start justify-between gap-4"
+    class="list-search relative flex flex-col tab:flex-row items-start justify-between gap-4"
   >
     <!-- Input Container -->
-    <div class="inp-container">
+    <div class="inp-container mob:text-lg w-full tab:w-1/2 tab:text-2xl">
       <input
         type="text"
         placeholder="Search for doctors here"
@@ -19,7 +17,9 @@
         (input)="handleInput($event)"
         (input)="filterDoctors()"
       />
-      <ul class="list-table bg-white shadow-lg w-full max-h-60 overflow-y-auto">
+      <ul
+        class="list-table bg-white shadow-lg w-full max-h-60 overflow-y-auto mob:text-sm tab:text-lg pc:text-2xl"
+      >
         <li
           *ngIf="filteredDoctors.length === 0 && searchName"
           class="text-gray-500"
@@ -38,7 +38,7 @@
     <select
       [(ngModel)]="selectedSpecialty"
       (change)="filterDoctors()"
-      class="select-cont w-full tab:w-1/3 p-2 mob:text-sm"
+      class="select-cont w-80 border border-gray-300 rounded-md mob:text-sm tab:text-xl"
     >
       <option value="" disabled selected>Select Specialties</option>
       <option value="all">All Specialties</option>

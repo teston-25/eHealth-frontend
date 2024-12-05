@@ -2,32 +2,35 @@
   id="notification"
   class="notification-page block align-center min-h-screen bg-gray-50"
 >
+  <!-- Header -->
   <div
     class="notification-header bg-gray-100 px-6 py-4 text-3xl font-bold text-gray-800 border-b-2 border-gray-300 shadow-md"
   >
     <h1>Notifications</h1>
   </div>
-  <div class="notifications block space-y-6 p-6 w-full max-w-4xl">
+
+  <!-- Notifications Container -->
+  <div class="notifications block space-y-6 p-6 w-full max-w-4xl mx-auto">
     <!-- Chat Notification -->
     <div
-      class="chat-notification bg-white p-4 rounded-lg shadow-lg transform transition-all hover:bg-gray-100 hover:shadow-xl"
+      class="chat-notification bg-white p-4 rounded-lg shadow-lg transform transition-all duration-300 hover:bg-gray-100 hover:shadow-xl"
     >
       <div
-        class="notif-header flex justify-between items-center py-3 cursor-pointer hover:text-blue-600 transition duration-200"
+        class="notif-header flex justify-between items-center py-3 cursor-pointer hover:text-blue-600 transition duration-300"
       >
         <h1 class="text-xl font-semibold text-gray-800">Chat</h1>
         <button
           (click)="onChat()"
-          class="text-blue-500 hover:text-blue-700 transition duration-200"
+          class="text-blue-500 hover:text-blue-700 transition duration-300"
         >
           {{ btnStates.chat }}
         </button>
       </div>
-      <hr />
+      <hr class="mt-2" />
       <ul *ngIf="!onState.chat" class="space-y-3 mt-4">
         <li
           *ngFor="let notMsg of chatNotifications"
-          class="p-3 border border-gray-200 bg-white rounded-lg hover:bg-gray-50 transition duration-200 transform"
+          class="p-3 border border-gray-200 bg-white rounded-lg hover:bg-gray-50 transition duration-300 transform hover:scale-105"
         >
           <p class="text-gray-800">{{ notMsg.message }}</p>
           <p class="text-sm text-gray-500">{{ notMsg.timestamp }}</p>
@@ -37,24 +40,24 @@
 
     <!-- Comment Notification -->
     <div
-      class="comm-like-notification bg-white p-4 rounded-lg shadow-lg transform transition-all hover:bg-gray-100 hover:shadow-xl"
+      class="comm-like-notification bg-white p-4 rounded-lg shadow-lg transform transition-all duration-300 hover:bg-gray-100 hover:shadow-xl"
     >
       <div
-        class="notif-header flex justify-between items-center py-3 cursor-pointer hover:text-blue-600 transition duration-200"
+        class="notif-header flex justify-between items-center py-3 cursor-pointer hover:text-blue-600 transition duration-300"
       >
         <h1 class="text-xl font-semibold text-gray-800">Comments</h1>
         <button
           (click)="onComment()"
-          class="text-blue-500 hover:text-blue-700 transition duration-200"
+          class="text-blue-500 hover:text-blue-700 transition duration-300"
         >
           {{ btnStates.comment }}
         </button>
       </div>
-      <hr />
+      <hr class="mt-2" />
       <ul *ngIf="!onState.comment" class="space-y-3 mt-4">
         <li
           *ngFor="let comMsg of commentNotifications"
-          class="p-3 border border-gray-200 bg-white rounded-lg hover:bg-gray-50 transition duration-200 transform"
+          class="p-3 border border-gray-200 bg-white rounded-lg hover:bg-gray-50 transition duration-300 transform hover:scale-105"
         >
           <p class="text-gray-800">{{ comMsg.message }}</p>
           <p class="text-sm text-gray-500">{{ comMsg.timestamp }}</p>
@@ -64,24 +67,24 @@
 
     <!-- Payment Notification -->
     <div
-      class="payment-notification bg-white p-4 rounded-lg shadow-lg transform transition-all hover:bg-gray-100 hover:shadow-xl"
+      class="payment-notification bg-white p-4 rounded-lg shadow-lg transform transition-all duration-300 hover:bg-gray-100 hover:shadow-xl"
     >
       <div
-        class="notif-header flex justify-between items-center py-3 cursor-pointer hover:text-blue-600 transition duration-200"
+        class="notif-header flex justify-between items-center py-3 cursor-pointer hover:text-blue-600 transition duration-300"
       >
         <h1 class="text-xl font-semibold text-gray-800">Payment</h1>
         <button
           (click)="onPay()"
-          class="text-blue-500 hover:text-blue-700 transition duration-200"
+          class="text-blue-500 hover:text-blue-700 transition duration-300"
         >
           {{ btnStates.payment }}
         </button>
       </div>
-      <hr />
+      <hr class="mt-2" />
       <ul *ngIf="!onState.payment" class="space-y-3 mt-4">
         <li
           *ngFor="let payMsg of paymentNotifications"
-          class="p-3 border border-gray-200 bg-white rounded-lg hover:bg-gray-50 transition duration-200 transform"
+          class="p-3 border border-gray-200 bg-white rounded-lg hover:bg-gray-50 transition duration-300 transform hover:scale-105"
         >
           <p class="text-gray-800">{{ payMsg.message }}</p>
           <p class="text-sm text-gray-500">{{ payMsg.timestamp }}</p>
@@ -91,24 +94,24 @@
 
     <!-- Appointment Reminder Notification -->
     <div
-      class="appointment-reminder bg-white p-4 rounded-lg shadow-lg transform transition-all hover:bg-gray-100 hover:shadow-xl"
+      class="appointment-reminder bg-white p-4 rounded-lg shadow-lg transform transition-all duration-300 hover:bg-gray-100 hover:shadow-xl"
     >
       <div
-        class="notif-header flex justify-between items-center py-3 cursor-pointer hover:text-blue-600 transition duration-200"
+        class="notif-header flex justify-between items-center py-3 cursor-pointer hover:text-blue-600 transition duration-300"
       >
         <h1 class="text-xl font-semibold text-gray-800">Appointment</h1>
         <button
           (click)="onAppoint()"
-          class="text-blue-500 hover:text-blue-700 transition duration-200"
+          class="text-blue-500 hover:text-blue-700 transition duration-300"
         >
           {{ btnStates.appointment }}
         </button>
       </div>
-      <hr />
+      <hr class="mt-2" />
       <ul *ngIf="!onState.appointment" class="space-y-3 mt-4">
         <li
           *ngFor="let appMsg of appointmentNotifications"
-          class="p-3 border border-gray-200 bg-white rounded-lg hover:bg-gray-50 transition duration-200 transform hover:scale-105"
+          class="p-3 border border-gray-200 bg-white rounded-lg hover:bg-gray-50 transition duration-300 transform hover:scale-105"
         >
           <p class="text-gray-800">
             {{ appMsg.patientName }} - {{ appMsg.notificationMessage }}

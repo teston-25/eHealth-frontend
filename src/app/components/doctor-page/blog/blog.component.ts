@@ -37,6 +37,8 @@ export class BlogComponent {
       this.blogTxt = 'Close Blog';
     } else {
       this.showAddBlogForm = false;
+      this.newBlog.title = '';
+      this.newBlog.content = '';
       this.blogTxt = 'Add Blog';
     }
   }
@@ -45,5 +47,6 @@ export class BlogComponent {
     this.blogs.push({ ...this.newBlog });
     this.newBlog = { title: '', content: '' };
     this.showAddBlogForm = false;
+    this.blogTxt = 'Add Blog';
   }
 }

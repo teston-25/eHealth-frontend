@@ -43,10 +43,12 @@ nav {
 
 /* home-page */
 .main {
-  background-image: url(../../../../assets/images/landing2.jpg);
+  background-image: url(../../../../assets/images/doc-pat.webp);
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
+  backdrop-filter: blur(30px);
+  margin: auto;
 }
 .home-banner {
   margin: 20px;
@@ -79,15 +81,15 @@ nav {
 .profile {
   background-color: #fff;
   padding: 20px;
+  height: fit-content;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  /* width: 40%; */
   gap: 50px;
-  max-width: 800px;
   text-align: center;
 }
 .profile-page {
-  background-image: url(../../../../assets/images/pp.jpg);
+  background-image: url(../../../../assets/images/patient.jpg);
+  background-size: cover;
   height: 73vh;
 }
 .profile-header {

@@ -104,7 +104,7 @@
     <div class="profile-page relative">
       <!-- Background Overlay -->
       <div
-        class="prof-back fixed inset-0 bg-black bg-opacity-50 backdrop-blur-xl z-10"
+        class="prof-back fixed inset-0 bg-black bg-opacity-20 backdrop-blur-lg z-10"
       >
         <button
           (click)="onClose()"
@@ -115,12 +115,12 @@
       </div>
 
       <div
-        class="profile z-20 bg-white rounded-lg shadow-lg w-80 tab:w-1/2 my-4 tab:mx-16 tab:my-16 p-6 translate-y-5"
+        class="profile z-20 bg-white rounded-lg shadow-lg w-80 tab:w-1/2 tab:mx-16 tab:my-16 p-6 translate-y-5"
       >
         <div class="profile-header text-center">
           <div class="profile-text-container mb-4">
             <h1 class="profile-title text-3xl font-semibold text-gray-800">
-              Doctor Profile
+              Patient Profile
             </h1>
           </div>
 
@@ -131,8 +131,7 @@
           />
 
           <div class="profile-text-container">
-            <h3 class="text-xl font-medium text-gray-700">{{ doctor }}</h3>
-            <h4 class="text-lg text-gray-600">{{ specialitiy }}</h4>
+            <h3 class="text-xl font-medium text-gray-700">{{ user }}</h3>
           </div>
         </div>
 
@@ -259,13 +258,16 @@
 
   <main *ngIf="onProfile">
     <!-- Main Content -->
-    <div id="home" class="main relative bg-cover bg-fixed px-12 py-16">
+    <div
+      id="home"
+      class="main relative bg-cover min-h-screen bg-fixed px-12 py-16"
+    >
       <!-- home page -->
-      <div class="home-banner text-center text-blue-900 font-bold">
-        <h1 class="text-4xl mb-4">Welcome, {{ doctor }}</h1>
+      <div class="home-banner mt-12 text-center text-blue-900 font-bold">
+        <h1 class="text-4xl mb-4">Welcome, {{ user }}</h1>
         <br />
         <p class="text-xl">
-          Your dashboard for managing appointments, <br />
+          Your dashboard for managing your appointments, <br />
           Blogs and communications
         </p>
       </div>

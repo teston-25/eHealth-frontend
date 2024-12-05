@@ -1,6 +1,5 @@
 /* home page */
 .home-page {
-  /* padding: 10px 100px; */
   padding: 5px 20px;
   padding-top: 100px;
   width: 100%;
@@ -33,9 +32,9 @@
   margin: 20px 30px;
   margin-bottom: 50px;
 }
-.search-eng {
+/* .search-eng {
   font-size: 24px;
-}
+} */
 input,
 select {
   border: 1px solid rgb(177, 177, 177);
@@ -47,13 +46,15 @@ select {
 .inp-container {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  /* width: 50%; */
 }
 
-.select-cont {
-  width: 50%;
+/* .select-cont {
+  width: 20%;
+} */
+/* .select-cont option {
   font-size: 14px;
-}
+} */
 
 .listofsearch {
   width: 100%;

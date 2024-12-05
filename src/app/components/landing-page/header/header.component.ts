@@ -28,6 +28,9 @@ export class HeaderComponent implements OnInit {
       this.off.classList.remove('hidden');
       this.nav.classList.add('active');
       this.nav.classList.remove('hidden');
+
+      this.nav.classList.add('mt-4');
+      this.nav.classList.add('mr-4');
     }
   }
 
@@ -39,6 +42,9 @@ export class HeaderComponent implements OnInit {
       this.off.classList.remove('active');
       this.nav.classList.add('hidden');
       this.nav.classList.remove('active');
+
+      this.nav.classList.remove('mt-4');
+      this.nav.classList.remove('mr-4');
     }
   }
 
@@ -53,6 +59,7 @@ export class HeaderComponent implements OnInit {
         top: elementPosition - 75, // Adjust the offset here
         behavior: 'smooth',
       });
+      this.offMenu();
     }
   }
 }

@@ -1,0 +1,57 @@
+/* contactUs page*/
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Contact Us Page Styles */
+.contact-us-page {
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+  padding: 40px;
+  background-color: #f9f9f9;
+}
+
+.contact-us-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.contact-us-header h1 {
+  font-size: 2.5rem;
+  color: #333;
+}
+.contact-us-header p {
+  font-size: 1.2rem;
+}
+.contact-form {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.contact-form h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+.btn-submit {
+  width: 100%;
+  padding: 10px;
+  font-size: 1.1rem;
+  color: white;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-submit:hover {
+  background-color: #45a049;
+}
+
+.contact-details {
+  margin-top: 40px;
+  padding: 20px;
+}

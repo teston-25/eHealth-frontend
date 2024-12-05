@@ -5,10 +5,10 @@ module.exports = {
     extend: {
       screens: {
         // xs: "480px", // Extra small devices
-        mob: "640px", // Small devices
-        tab: "768px", // Medium devices
-        pc: "1024px", // Large devices
-        desk: "1280px", // Extra large devices
+        mob: "680px", // Small devices
+        tab: "780px", // Medium devices
+        pc: "980px", // Large devices
+        desk: "1240px", // Extra large devices
         "2xl": "1536px", // 2X large devices
       },
     },

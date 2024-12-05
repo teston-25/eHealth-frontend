@@ -1,32 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { FooterComponent } from '../../landing-page/footer/footer.component';
-import { NotificationDComponent } from '../notification/notification.component';
+import { AppointmentComponent } from '../appointment/appointment.component';
 import { BlogComponent } from '../blog/blog.component';
 import { ChatComponent } from '../chat/chat.component';
 import { ContactComponent } from '../contact/contact.component';
-import { AppointmentComponent } from '../appointment/appointment.component';
+import { NotificationDComponent } from '../notification/notification.component';
+import { FooterComponent } from '../../landing-page/footer/footer.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-docter-role',
+  selector: 'app-patient-role',
   standalone: true,
   imports: [
-    FormsModule,
     CommonModule,
-    FooterComponent,
-    NotificationDComponent,
+    FormsModule,
+    AppointmentComponent,
     BlogComponent,
     ChatComponent,
     ContactComponent,
-    AppointmentComponent,
+    NotificationDComponent,
+    FooterComponent,
   ],
-  templateUrl: './docter-role.component.html',
-  styleUrl: './docter-role.component.css',
+  templateUrl: './patient-role.component.html',
+  styleUrl: './patient-role.component.css',
 })
-export class DocterRoleComponent implements OnInit {
-  doctor = 'Dr. X';
-  specialitiy = 'Cardiology';
+export class PatientRoleComponent {
+  user = 'Mr. X';
   onPro = false;
   comments = [{ title: 'test', content: 'teston is testing' }];
 

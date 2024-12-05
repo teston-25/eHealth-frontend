@@ -14,25 +14,40 @@ export class LoginComponent {
   doctorData = {
     email: 'doctor@gmail.com',
     password: 'doctor',
-    role: 'doctor', // Default role
+    role: 'doctor',
   };
   //patient
   patientData = {
     email: 'patient@gmail.com',
     password: 'patient',
-    role: 'patient', // Default role
+    role: 'patient',
+  };
+  //admin
+  adminData = {
+    email: 'admin@gmail.com',
+    password: 'admin',
+    role: '',
   };
 
   login() {
-    this.userData.email.toLowerCase() === this.doctorData.email ||
-    (this.patientData.email &&
-      this.userData.password.toLowerCase() === this.doctorData.password) ||
-    (this.patientData.password &&
+    (this.userData.email.toLowerCase() ===
+      (this.doctorData.email ||
+        this.patientData.email ||
+        this.adminData.email) &&
+      this.userData.password.toLowerCase() ===
+        (this.doctorData.password ||
+          this.patientData.password ||
+          this.adminData.password) &&
       this.userData.role.toLowerCase() == this.doctorData.role) ||
-    this.patientData.role
-      ? this.userData.role == 'patient'
-        ? (window.location.href = './pat')
-        : (window.location.href = './doc')
+    this.patientData.role ||
+    this.adminData.role
+      ? this.userData.role.toLowerCase() == 'patient'
+        ? (window.location.href = './patient')
+        : this.userData.role.toLowerCase() == 'doctor'
+        ? (window.location.href = './doctor')
+        : this.userData.role == ''
+        ? (window.location.href = './admin')
+        : alert('Invalid account')
       : alert('Invalid account');
     this.userData.email = '';
     this.userData.password = '';

@@ -1,0 +1,99 @@
+<div
+  id="appointment"
+  class="main-appointment bg-white shadow-lg rounded-lg overflow-hidden"
+>
+  <!-- Appointment Header -->
+  <div
+    class="appointment-header flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-500 to-indigo-500 text-white"
+  >
+    <h1 class="text-3xl font-bold">Appointments</h1>
+    <button
+      class="bg-blue-500 text-white px-4 py-2 font-medium rounded-lg shadow hover:bg-white hover:text-blue-500"
+      (click)="toggleAddAppointmentModal()"
+    >
+      + Add
+    </button>
+  </div>
+
+  <!-- Appointment List -->
+  <div class="appointment-list p-6">
+    <h3 class="text-lg font-semibold text-gray-700 mb-4">
+      Upcoming Appointments
+    </h3>
+    <ul class="space-y-4">
+      <li
+        *ngFor="let appointment of appointments"
+        class="p-4 bg-gray-50 rounded-lg border border-gray-200 shadow flex justify-between items-center"
+      >
+        <div>
+          <p class="text-gray-800 font-medium">
+            {{ appointment.date }} - {{ formatTime(appointment.time) }} with
+            <span class="font-bold">{{ appointment.doctor | uppercase }}</span>
+          </p>
+        </div>
+        <button
+          class="p-4 text-black rounded-lg shadow hover:bg-blue-600 hover:text-white"
+        >
+          View Details
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Add Appointment Modal -->
+  <div
+    *ngIf="isAddAppointmentModalOpen"
+    class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center"
+  >
+    <div class="bg-white p-8 rounded-lg shadow-lg w-96">
+      <h2 class="text-xl font-bold mb-4">Add New Appointment</h2>
+      <form (ngSubmit)="addAppointment()">
+        <div class="mb-4">
+          <label class="block text-gray-700 font-semibold mb-2">Date</label>
+          <input
+            type="date"
+            class="w-full p-2 border border-gray-300 rounded-lg"
+            [(ngModel)]="newAppointment.date"
+            name="date"
+            required
+          />
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 font-semibold mb-2">Time</label>
+          <input
+            type="time"
+            class="w-full p-2 border border-gray-300 rounded-lg"
+            [(ngModel)]="newAppointment.time"
+            name="time"
+            required
+          />
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 font-semibold mb-2">Doctor</label>
+          <input
+            type="text"
+            class="w-full p-2 border border-gray-300 rounded-lg"
+            [(ngModel)]="newAppointment.doctor"
+            name="doctor"
+            required
+          />
+        </div>
+        <div class="flex justify-end">
+          <button
+            type="button"
+            class="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg mr-2"
+            (click)="toggleAddAppointmentModal()"
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            class="bg-blue-500 text-white px-4 py-2 rounded-lg"
+          >
+            Add
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

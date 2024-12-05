@@ -1,0 +1,70 @@
+<div id="contact" class="contact-us-page">
+  <div class="contact-us-header">
+    <h1>Contact Us</h1>
+    <p>
+      If you have any questions or need assistance, feel free to reach out to
+      us!
+    </p>
+  </div>
+  <div class="contact-page flex flex-wrap items-center py-12 px-6">
+    <div class="contact-form bg-white shadow-xl rounded-lg p-8 w-full max-w-xl">
+      <h2 class="text-2xl font-semibold text-center text-gray-800 mb-6">
+        Send us a Message
+      </h2>
+      <form (ngSubmit)="onSubmit()" class="space-y-6">
+        <div class="form-group">
+          <label for="name" class="text-gray-700">Name</label>
+          <input
+            type="text"
+            id="name"
+            [(ngModel)]="contactForm.name"
+            name="name"
+            required
+            class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="email" class="text-gray-700">Email</label>
+          <input
+            type="email"
+            id="email"
+            [(ngModel)]="contactForm.email"
+            name="email"
+            required
+            class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="message" class="text-gray-700">Message</label>
+          <textarea
+            id="message"
+            [(ngModel)]="contactForm.message"
+            name="message"
+            required
+            class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
+          ></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Submit</button>
+      </form>
+    </div>
+
+    <div
+      class="contact-details bg-white shadow-xl rounded-lg p-8 mt-8 w-full max-w-xl"
+    >
+      <h2 class="text-2xl font-semibold text-center text-gray-800 mb-6">
+        Our Contact Information
+      </h2>
+      <div class="contact-info space-y-4 text-gray-700">
+        <p><strong class="text-gray-800">Phone:</strong> +1 (123) 456-7890</p>
+        <p><strong class="text-gray-800">Email:</strong> {{ email }}</p>
+        <p>
+          <strong class="text-gray-800">Address:</strong> 123 Main Street, Addis
+          Ababa, Ethiopia
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

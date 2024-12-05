@@ -1,0 +1,26 @@
+/* notification */
+.notification-page {
+  background-image: url(../../../../assets/images/notification-h.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+}
+.notification-header {
+  margin: 0;
+  font-size: 24px;
+  color: white;
+  padding: 10px 20px;
+  background-color: #007bff;
+  border-bottom: 2px solid #ddd;
+}
+
+.notifications {
+  margin: 10px auto;
+}
+
+.notifications div {
+  padding: 10px 20px;
+}
+.notifications div ul li:hover {
+  transform: scaleX(1.01);
+  cursor: pointer;
+}

@@ -1,0 +1,5 @@
+.blog-post img {
+  background-image: url(../../../../assets/images/blog-back.jpg);
+  background-size: cover;
+  background-position: center;
+}

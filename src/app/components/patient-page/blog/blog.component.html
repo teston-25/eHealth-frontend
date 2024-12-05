@@ -1,0 +1,105 @@
+<div
+  id="blog"
+  class="blog-header bg-gradient-to-r from-blue-500 to-indigo-500 text-white p-6 flex justify-between items-center rounded-t-lg shadow-lg"
+>
+  <h1 class="text-2xl font-semibold">Blog</h1>
+</div>
+
+<div class="blog-list p-6">
+  <div class="blog-container space-y-8">
+    <div
+      class="blog-post bg-white shadow-lg rounded-lg p-6 hover:shadow-2xl transition-shadow duration-300"
+      *ngFor="let post of blogPosts"
+    >
+      <h2 class="text-2xl font-semibold text-gray-900 mb-2">
+        {{ post.title }}
+      </h2>
+      <p class="author-date text-sm text-gray-500 mb-4">
+        By <strong class="text-gray-700">{{ post.author }}</strong> on
+        {{ post.date }}
+      </p>
+      <img
+        alt="{{ post.title }}"
+        class="blog-image w-full h-60 object-cover rounded-md mb-4"
+      />
+      <p class="content text-gray-700 leading-relaxed mb-4">
+        {{ post.content }}
+      </p>
+      <ul class="tags flex flex-wrap gap-2 mb-4">
+        <li
+          *ngFor="let tag of post.tags"
+          class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm"
+        >
+          #{{ tag }}
+        </li>
+      </ul>
+      <div class="flex justify-between">
+        <button
+          class="read-more bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
+        >
+          Read More
+        </button>
+        <div>
+          <!-- Comment Button -->
+          <button
+            class="comment bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300 transition"
+            (click)="toggleCommentForm()"
+          >
+            Comment
+          </button>
+
+          <!-- Comment Form Modal -->
+          <div
+            *ngIf="isCommentFormOpen"
+            class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center"
+          >
+            <div class="bg-white p-8 rounded-lg shadow-lg w-96">
+              <h2 class="text-xl font-bold mb-4">Add a Comment</h2>
+              <form (ngSubmit)="submitComment()">
+                <div class="mb-4">
+                  <label class="block text-gray-700 font-semibold mb-2"
+                    >Your Name</label
+                  >
+                  <input
+                    type="text"
+                    class="w-full p-2 border border-gray-300 rounded-lg"
+                    [(ngModel)]="commentForm.name"
+                    name="name"
+                    required
+                  />
+                </div>
+                <div class="mb-4">
+                  <label class="block text-gray-700 font-semibold mb-2"
+                    >Comment</label
+                  >
+                  <textarea
+                    class="w-full p-2 border border-gray-300 rounded-lg"
+                    rows="4"
+                    [(ngModel)]="commentForm.message"
+                    name="message"
+                    required
+                  ></textarea>
+                </div>
+                <div class="flex justify-end">
+                  <button
+                    type="button"
+                    class="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg mr-2"
+                    (click)="toggleCommentForm()"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    class="bg-blue-500 text-white px-4 py-2 rounded-lg"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
