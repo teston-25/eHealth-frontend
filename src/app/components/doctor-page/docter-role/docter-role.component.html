@@ -1,6 +1,6 @@
 <div class="doctor-page mt-24 w-full h-full">
   <!-- Header -->
-  <header class="fixed top-0 w-full z-10 text-white">
+  <header class="fixed top-0 w-full z-10 text-white bg-blue-900">
     <section class="flex justify-between px-16 py-4">
       <div class="logo text-2xl font-bold">
         <h3>E-Health</h3>
@@ -9,7 +9,7 @@
       <section class="nav-bar">
         <section class="toggle-btn tab:active pc:hidden pc:text-sm">
           <!--ham btn  -->
-          <button id="btnham" class="btn-ham active" (click)="onMenu()">
+          <button id="btnham" class="btn-ham" (click)="onMenu()">
             <svg
               class="w-6 h-6 block transition ease-in duration-600"
               xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +45,7 @@
           </button>
         </section>
         <nav
-          class="nav relative text-lg tab:block tab:mt-12 pc:flex pc:items-center pc:gap-6 hidden tab:hidden"
+          class="nav py-4 desk:flex desk:items-center desk:gap-8 desk:py-0 hidden flex-col desk:flex-row desk:static absolute top-16 left-0 w-full shadow-md desk:shadow-none transition-all duration-500 ease-in-out transform -translate-y-full desk:translate-y-0"
         >
           <li>
             <a href="javascript:void(0)" (click)="scrollTo('home')">Home</a>
@@ -68,13 +68,13 @@
           </li>
           <li>
             <a href="javascript:void(0)" (click)="scrollTo('contact')"
-              >Contact Us</a
+              >Contacts</a
             >
           </li>
           <li>
             <button
               (click)="profile()"
-              class="ppDoc transition-transform duration-200 hover:scale-125"
+              class="ppDoc transition-transform duration-200 hover:scale-105"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -259,40 +259,60 @@
 
   <main *ngIf="onProfile">
     <!-- Main Content -->
-    <div id="home" class="main relative bg-cover bg-fixed px-12 py-16">
-      <!-- home page -->
-      <div class="home-banner text-center text-blue-900 font-bold">
-        <h1 class="text-4xl mb-4">Welcome, {{ doctor }}</h1>
-        <br />
-        <p class="text-xl">
-          Your dashboard for managing appointments, <br />
-          Blogs and communications
+    <div
+      id="home"
+      class="main relative bg-gradient-to-br from-blue-100 to-blue-300 bg-cover bg-fixed px-12 py-16 min-h-screen"
+    >
+      <!-- Home Page -->
+      <div
+        class="home-banner text-center text-blue-900 font-extrabold animate-fade-in"
+      >
+        <h1 class="text-5xl lg:text-6xl mb-6">Welcome, {{ doctor }}</h1>
+        <p class="text-lg lg:text-2xl">
+          Your all-in-one dashboard for managing appointments, blogs, and
+          communications.
         </p>
       </div>
 
       <div
-        class="quick-links flex flex-wrap justify-center gap-8 mt-12 m-20 text-center align-center"
+        class="quick-links flex flex-wrap justify-center gap-8 mt-16 px-4 md:px-8 lg:px-16 text-center align-center animate-fade-in-delayed"
       >
+        <!-- Appointments Card -->
         <div
           (click)="scrollTo('appointment')"
-          class="card bg-blue-600/50 text-white border shadow-md rounded-lg p-4 transition-transform duration-300 hover:scale-105 hover:bg-white hover:text-blue-500 transition-colors duration-300"
+          class="card group relative bg-gradient-to-br from-blue-600 to-blue-800 text-white border shadow-xl rounded-lg p-6 transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
         >
-          <h3 class="text-xl font-bold mb-2">Appointments</h3>
-          <p>View and manage your upcoming appointments</p>
+          <h3 class="text-2xl font-bold mb-3">Appointments</h3>
+          <p class="text-sm lg:text-base">
+            View and manage your <br />upcoming appointments
+          </p>
+          <div
+            class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-lg"
+          ></div>
         </div>
+
+        <!-- Notifications Card -->
         <div
           (click)="scrollTo('notification')"
-          class="card bg-blue-600/50 text-white border border-gray-300 shadow-md rounded-lg p-4 text-center transition-transform duration-300 hover:scale-105 hover:bg-white hover:text-blue-500 transition-colors duration-300"
+          class="card group relative bg-gradient-to-br from-blue-600 to-blue-800 text-white border shadow-xl rounded-lg p-6 transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
         >
-          <h3 class="text-xl font-bold mb-2">Notifications</h3>
-          <p>Check your latest updates</p>
+          <h3 class="text-2xl font-bold mb-3">Notifications</h3>
+          <p class="text-sm lg:text-base">Check your latest updates</p>
+          <div
+            class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-lg"
+          ></div>
         </div>
+
+        <!-- Chat Card -->
         <div
           (click)="scrollTo('chat')"
-          class="card bg-blue-600/50 text-white border border-gray-300 shadow-md rounded-lg p-4 text-center transition-transform duration-300 hover:scale-105 hover:bg-white hover:text-blue-500 transition-colors duration-300"
+          class="card group relative bg-gradient-to-br from-blue-600 to-blue-800 text-white border shadow-xl rounded-lg p-6 transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
         >
-          <h3 class="text-xl font-bold mb-2">Chat</h3>
-          <p>Communicate with patients</p>
+          <h3 class="text-2xl font-bold mb-3">Chat</h3>
+          <p class="text-sm lg:text-base">Communicate with patients</p>
+          <div
+            class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-lg"
+          ></div>
         </div>
       </div>
     </div>

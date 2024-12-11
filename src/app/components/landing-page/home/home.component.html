@@ -1,35 +1,40 @@
-<div id="home" class="home-page">
+<div
+  id="home"
+  class="home-page bg-gradient-to-r from-indigo-500 to-blue-500 min-h-screen p-6"
+>
   <h1
-    class="intro bg-white/50 text-white/90 align-center p-6 rounded-lg shadow-lg mob:text-lg tab:text-2xl desk:text-4xl text-center"
+    class="intro bg-white/50 text-gray-900 font-bold align-center p-6 rounded-lg shadow-lg mob:text-lg tab:text-2xl desk:text-4xl text-center transition-transform duration-300"
   >
     Welcome to eHealth Platform
   </h1>
 
   <div
-    class="list-search relative flex flex-col tab:flex-row items-start justify-between gap-4"
+    class="list-search relative flex flex-col tab:flex-row items-start justify-between gap-6 mt-8"
   >
     <!-- Input Container -->
     <div class="inp-container mob:text-lg w-full tab:w-1/2 tab:text-2xl">
       <input
         type="text"
         placeholder="Search for doctors here"
-        class="search-eng w-full p-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500"
+        class="search-eng w-full p-3 border border-gray-300 rounded-lg shadow-md focus:ring-4 focus:ring-indigo-500 transition-shadow"
         (input)="handleInput($event)"
         (input)="filterDoctors()"
       />
       <ul
-        class="list-table bg-white shadow-lg w-full max-h-60 overflow-y-auto mob:text-sm tab:text-lg pc:text-2xl"
+        class="list-table bg-white shadow-lg w-full max-h-60 overflow-y-auto mob:text-sm tab:text-lg pc:text-2xl rounded-md mt-2"
       >
         <li
           *ngIf="filteredDoctors.length === 0 && searchName"
-          class="text-gray-500"
+          class="text-gray-500 px-3 py-2"
         >
           No matching doctors found.
         </li>
-        <li *ngFor="let doctor of filteredDoctors" class="py-2">
+        <li
+          *ngFor="let doctor of filteredDoctors"
+          class="py-3 px-4 border-b border-gray-200 hover:bg-indigo-50"
+        >
           <span class="font-medium text-gray-800">{{ doctor.name }}</span> -
           {{ doctor.specialty }} ({{ doctor.location }})
-          <hr class="border-t my-2" />
         </li>
       </ul>
     </div>
@@ -38,7 +43,7 @@
     <select
       [(ngModel)]="selectedSpecialty"
       (change)="filterDoctors()"
-      class="select-cont w-80 border border-gray-300 rounded-md mob:text-sm tab:text-xl"
+      class="select-cont w-80 border border-gray-300 rounded-md p-3 shadow-sm mob:text-sm tab:text-xl focus:outline-none focus:ring-4 focus:ring-indigo-400"
     >
       <option value="" disabled selected>Select Specialties</option>
       <option value="all">All Specialties</option>
@@ -48,26 +53,47 @@
     </select>
   </div>
 
-  <div class="list-topDoctor">
+  <div class="list-topDoctor mt-10">
     <h1
-      class="bg-white/70 text-white/50 rounded-lg shadow-lg mob:text-lg tab:text-4xl"
+      class="bg-white/70 text-gray-900 font-bold rounded-lg shadow-lg mob:text-lg tab:text-4xl text-center p-4 mb-4"
     >
       Top Doctors
     </h1>
-    <button (click)="Dtrs()" class="btn-view">{{ text_doctors }}</button>
-    <ul class="doc-container">
-      <li *ngFor="let dtr of doctors">
-        <h2>{{ dtr.name }}</h2>
-        <h3>{{ dtr.specialty }}</h3>
-        <h4>{{ dtr.experience }} year Experience</h4>
-        <p>{{ dtr.location }}</p>
+    <button
+      (click)="Dtrs()"
+      class="btn-view bg-indigo-600 text-white py-2 px-6 rounded-lg shadow-md transition-transform duration-200 hover:scale-105 focus:ring-4 focus:ring-indigo-300"
+    >
+      {{ text_doctors }}
+    </button>
+    <ul
+      class="doc-container grid gap-6 grid-cols-1 mob:grid-cols-1 tab:grid-cols-2 desk:grid-cols-3 mt-6"
+    >
+      <li
+        *ngFor="let dtr of doctors"
+        class="p-4 bg-white shadow-lg rounded-md hover:shadow-xl transition-shadow duration-300"
+      >
+        <img
+          src="doctor-placeholder.jpg"
+          alt="Doctor {{ dtr.name }}"
+          class="w-16 h-16 rounded-full mb-3"
+        />
+        <h2 class="text-lg font-bold text-gray-800">{{ dtr.name }}</h2>
+        <h3 class="text-gray-600">{{ dtr.specialty }}</h3>
+        <h4 class="text-sm text-gray-500">
+          {{ dtr.experience }} years Experience
+        </h4>
+        <p class="text-gray-500">{{ dtr.location }}</p>
       </li>
     </ul>
   </div>
 
   <br />
 
-  <section class="btn text-lg mb-2 mob:text-sm">
-    <button class="btn-signup"><a href="/signup">Sign-Up</a></button>
+  <section class="btn text-lg mb-2 mob:text-sm text-center">
+    <button
+      class="btn-signup bg-indigo-600 text-white py-2 px-6 rounded-lg shadow-md transition-transform duration-200 hover:scale-105 focus:ring-4 focus:ring-indigo-300"
+    >
+      <a href="/signup" class="hover:underline">Sign-Up</a>
+    </button>
   </section>
 </div>

@@ -21,31 +21,19 @@ export class HeaderComponent implements OnInit {
   }
 
   onMenu() {
-    if (this.ham && this.off && this.nav) {
-      this.ham.classList.add('hidden');
-      this.ham.classList.remove('active');
-      this.off.classList.add('active');
-      this.off.classList.remove('hidden');
-      this.nav.classList.add('active');
-      this.nav.classList.remove('hidden');
-
-      this.nav.classList.add('mt-4');
-      this.nav.classList.add('mr-4');
-    }
+    this.nav?.classList.remove('-translate-y-full', 'hidden');
+    this.nav?.classList.add('translate-y-0');
+    this.nav?.classList.add('bg-blue-900');
+    this.ham?.classList.add('hidden');
+    this.off?.classList.remove('hidden');
   }
 
   offMenu() {
-    if (this.ham && this.off && this.nav) {
-      this.ham.classList.add('active');
-      this.ham.classList.remove('hidden');
-      this.off.classList.add('hidden');
-      this.off.classList.remove('active');
-      this.nav.classList.add('hidden');
-      this.nav.classList.remove('active');
-
-      this.nav.classList.remove('mt-4');
-      this.nav.classList.remove('mr-4');
-    }
+    this.nav?.classList.add('-translate-y-full', 'hidden');
+    this.nav?.classList.remove('translate-y-0');
+    this.nav?.classList.remove('bg-blue-900');
+    this.ham?.classList.remove('hidden');
+    this.off?.classList.add('hidden');
   }
 
   //navigation bar

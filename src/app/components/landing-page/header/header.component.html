@@ -1,6 +1,6 @@
-<nav class="align-center fixed top-0 right-0 left-0 z-20">
+<nav class="align-center fixed top-0 right-0 left-0 z-20 bg-blue-900">
   <section class="logo">
-    <h3>E-Health</h3>
+    <h3>eHealth</h3>
   </section>
 
   <section class="nav-bar align-center">
@@ -43,26 +43,54 @@
         </button>
       </section>
       <ul
-        class="menu px-4 text-lg tab:mt-12 desk:absolute desk:top-4 desk:right-4 desk:mt-0 desk:flex desk:mt-0 desk:items-center tab:gap-6 hidden"
+        class="menu px-6 py-4 desk:flex desk:items-center desk:gap-8 desk:py-0 hidden flex-col desk:flex-row desk:static absolute top-16 left-0 w-full shadow-md desk:shadow-none transition-all duration-500 ease-in-out transform -translate-y-full desk:translate-y-0"
       >
         <li>
           <a
             (click)="scrollTo('home')"
             routerLinkActive="text-blue-500 font-bold"
-            class="hover:scale-110"
+            class="block hover:text-blue-600 transition hover:scale-110"
             >Home</a
           >
         </li>
-        <li><a (click)="scrollTo('blog')" class="hover:scale-150">Blog</a></li>
-        <li><a (click)="scrollTo('faq')" class="hover:scale-150">FAQ</a></li>
         <li>
-          <a (click)="scrollTo('about')" class="hover:scale-150">About</a>
+          <a
+            (click)="scrollTo('blog')"
+            class="block hover:text-blue-600 transition hover:scale-110"
+            >Blog</a
+          >
         </li>
         <li>
-          <a (click)="scrollTo('contact')" class="hover:scale-110">Contact</a>
+          <a
+            (click)="scrollTo('faq')"
+            class="block hover:text-blue-600 transition hover:scale-110"
+            >FAQ</a
+          >
         </li>
-        <li><a class="login hover:scale-110" href="./login">Login</a></li>
-        <li><a class="signup hover:scale-110" href="./signup">Signup</a></li>
+        <li>
+          <a
+            (click)="scrollTo('about')"
+            class="block hover:text-blue-600 transition hover:scale-110"
+            >About</a
+          >
+        </li>
+        <li>
+          <a
+            (click)="scrollTo('contact')"
+            class="block hover:text-blue-600 transition hover:scale-110"
+            >Contact</a
+          >
+        </li>
+        <li>
+          <a href="./login" class="login block text-gray-700 transition"
+            >Login</a
+          >
+        </li>
+        <li>
+          <a href="./signup" class="signup block text-gray-700 transition"
+            >Signup</a
+          >
+        </li>
       </ul>
     </section>
   </section>
