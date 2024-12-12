@@ -1,9 +1,8 @@
 .nav li {
-  padding: 30px;
+  padding: 20px;
 }
 
 .active {
-  color: rgb(99, 239, 99);
   background-color: white;
   padding: 10px 40px;
   position: absolute;

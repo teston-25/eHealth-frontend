@@ -45,29 +45,53 @@
           </button>
         </section>
         <nav
-          class="nav py-4 desk:flex desk:items-center desk:gap-8 desk:py-0 hidden flex-col desk:flex-row desk:static absolute top-16 left-0 w-full shadow-md desk:shadow-none transition-all duration-500 ease-in-out transform -translate-y-full desk:translate-y-0"
+          class="nav px-6 py-4 desk:flex desk:items-center desk:gap-8 desk:py-0 hidden flex-col desk:flex-row desk:static absolute top-16 left-0 w-full shadow-md desk:shadow-none transition-all duration-500 ease-in-out transform -translate-y-full desk:translate-y-0"
         >
           <li>
-            <a href="javascript:void(0)" (click)="scrollTo('home')">Home</a>
+            <a
+              href="javascript:void(0)"
+              (click)="scrollTo('home')"
+              class="hover:text-blue-500"
+              >Home</a
+            >
           </li>
           <li>
-            <a href="javascript:void(0)" (click)="scrollTo('appointment')"
+            <a
+              href="javascript:void(0)"
+              (click)="scrollTo('appointment')"
+              class="hover:text-blue-500"
               >Appointment</a
             >
           </li>
           <li>
-            <a href="javascript:void(0)" (click)="scrollTo('chat')">Chat</a>
+            <a
+              href="javascript:void(0)"
+              (click)="scrollTo('chat')"
+              class="hover:text-blue-500"
+              >Chat</a
+            >
           </li>
           <li>
-            <a href="javascript:void(0)" (click)="scrollTo('blog')">Blog</a>
+            <a
+              href="javascript:void(0)"
+              (click)="scrollTo('blog')"
+              class="hover:text-blue-500"
+              >Blog</a
+            >
           </li>
           <li>
-            <a href="javascript:void(0)" (click)="scrollTo('notification')"
+            <a
+              href="javascript:void(0)"
+              (click)="scrollTo('notification')"
+              class="hover:text-blue-500"
               >Notifications</a
             >
           </li>
           <li>
-            <a href="javascript:void(0)" (click)="scrollTo('contact')"
+            <a
+              href="javascript:void(0)"
+              (click)="scrollTo('contact')"
+              class="hover:text-blue-500"
               >Contacts</a
             >
           </li>
@@ -269,8 +293,8 @@
       >
         <h1 class="text-5xl lg:text-6xl mb-6">Welcome, {{ doctor }}</h1>
         <p class="text-lg lg:text-2xl">
-          Your all-in-one dashboard for managing appointments, blogs, and
-          communications.
+          Your all-in-one dashboard for <br />
+          managing appointments, blogs, and communications.
         </p>
       </div>
 

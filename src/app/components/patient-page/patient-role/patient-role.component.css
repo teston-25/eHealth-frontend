@@ -10,7 +10,6 @@ html {
 header {
   position: fixed;
   padding: 20px 15px;
-  background: #052c56;
 }
 header section nav {
   list-style: none;
@@ -49,6 +48,7 @@ nav {
   background-position: center;
   backdrop-filter: blur(30px);
   margin: auto;
+  padding-top: 110px;
 }
 .home-banner {
   margin: 20px;
