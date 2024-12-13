@@ -1,0 +1,40 @@
+<h2 class="text-3xl font-semibold mb-6">Financial Dashboard</h2>
+
+<!-- Financial Metrics -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+  <div class="bg-white shadow-md rounded-lg p-5">
+    <h3 class="text-xl font-semibold">Total Revenue</h3>
+    <p class="text-3xl">${{ financialData.totalRevenue }}</p>
+  </div>
+
+  <div class="bg-white shadow-md rounded-lg p-5">
+    <h3 class="text-xl font-semibold">Net Profit</h3>
+    <p class="text-3xl">${{ financialData.netProfit }}</p>
+  </div>
+
+  <div class="bg-white shadow-md rounded-lg p-5">
+    <h3 class="text-xl font-semibold">Outstanding Invoices</h3>
+    <p class="text-3xl">${{ financialData.outstandingInvoices }}</p>
+  </div>
+
+  <div class="bg-white shadow-md rounded-lg p-5">
+    <h3 class="text-xl font-semibold">Average Revenue Per User</h3>
+    <p class="text-3xl">${{ financialData.averageRevenuePerUser }}</p>
+  </div>
+
+  <div class="bg-white shadow-md rounded-lg p-5">
+    <h3 class="text-xl font-semibold">Churn Rate</h3>
+    <p class="text-3xl">{{ financialData.churnRate * 100 }}%</p>
+  </div>
+
+  <div class="bg-white shadow-md rounded-lg p-5">
+    <h3 class="text-xl font-semibold">Conversion Rate</h3>
+    <p class="text-3xl">{{ financialData.conversionRate * 100 }}%</p>
+  </div>
+</div>
+
+<!-- Monthly Revenue Chart (Placeholder) -->
+<!-- <div class="bg-white shadow-md rounded-lg p-5 mt-6">
+  <h3 class="text-xl font-semibold">Monthly Revenue</h3>
+  <div class="h-64 bg-gray-200">[Chart placeholder]</div>
+</div> -->

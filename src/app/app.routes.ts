@@ -4,7 +4,7 @@ import { LoginComponent } from './components/landing-page/login/login.component'
 import { SignupComponent } from './components/landing-page/signup/signup.component';
 import { DocterRoleComponent } from './components/doctor-page/docter-role/docter-role.component';
 import { PatientRoleComponent } from './components/patient-page/patient-role/patient-role.component';
-import { AdminDashboardComponent } from './components/admin-dashbored/admin-dashbored.component';
+import { AdminDashboardComponent } from './components/admin/admin-dashbored/admin-dashbored.component';
 
 export const routes: Routes = [
   { path: '', component: MainBodyComponent },

@@ -1,0 +1,57 @@
+<div>
+  <!-- doctor appointment -->
+  <h2 class="text-3xl font-semibold mb-6">Doctor Appointments</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+    <div
+      *ngFor="let doctor of appointmentsData.doctors"
+      class="bg-white shadow-md rounded-lg p-5"
+    >
+      <h3 class="text-xl font-semibold">
+        {{ doctor.name }} - {{ doctor.specialty }}
+      </h3>
+      <ul class="mt-4">
+        <li *ngFor="let appointment of doctor.appointments" class="mb-4">
+          <p><strong>Patient:</strong> {{ appointment.patientName }}</p>
+          <p>
+            <strong>Date:</strong> {{ appointment.date }} at
+            {{ appointment.time }}
+          </p>
+          <p><strong>Status:</strong> {{ appointment.status }}</p>
+          <p>
+            <strong>Contact:</strong> {{ appointment.patientContact }} |
+            {{ appointment.patientEmail }}
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <br />
+
+  <!-- patient appointment -->
+  <h2 class="text-3xl font-semibold mb-6">Patient Appointments</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+    <div
+      *ngFor="let patient of appointmentsData.patients"
+      class="bg-white shadow-md rounded-lg p-5"
+    >
+      <h3 class="text-xl font-semibold">{{ patient.name }}</h3>
+      <ul class="mt-4">
+        <li *ngFor="let appointment of patient.appointments" class="mb-4">
+          <p>
+            <strong>Doctor:</strong> {{ appointment.doctorName }} ({{
+              appointment.specialty
+            }})
+          </p>
+          <p>
+            <strong>Date:</strong> {{ appointment.date }} at
+            {{ appointment.time }}
+          </p>
+          <p><strong>Status:</strong> {{ appointment.status }}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

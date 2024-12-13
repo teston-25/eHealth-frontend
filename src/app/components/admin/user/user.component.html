@@ -1,0 +1,182 @@
+<div class="p-0 tab:p-4 pc:p-6 bg-white shadow-lg rounded-lg">
+  <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-700">
+    User Management
+  </h2>
+
+  <!-- Tab Navigation -->
+  <div class="mb-6">
+    <div class="flex space-x-4 border-b">
+      <button
+        (click)="showDoctors()"
+        class="text-lg font-medium py-2 px-4 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        [ngClass]="{ 'border-b-2 border-blue-500': showDoctorTab }"
+      >
+        Doctors
+      </button>
+      <button
+        (click)="showPatients()"
+        class="text-lg font-medium py-2 px-4 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        [ngClass]="{ 'border-b-2 border-blue-500': !showDoctorTab }"
+      >
+        Patients
+      </button>
+    </div>
+  </div>
+
+  <!-- Doctors Table -->
+  <div *ngIf="showDoctorTab">
+    <h3 class="text-xl font-semibold mb-4">Doctors</h3>
+    <table class="min-w-full table-auto bg-white shadow-md rounded-lg">
+      <thead *ngIf="!isDocEditing">
+        <tr class="bg-gray-100 text-left">
+          <th class="px-6 py-3 text-sm font-semibold mob:px-2 text-gray-700">
+            Name
+          </th>
+          <th class="px-4 py-3 text-sm font-semibold mob:px-2 text-gray-700">
+            Specialty
+          </th>
+          <th class="px-4 py-3 text-sm font-semibold mob:px-2 text-gray-700">
+            Actions
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let doctor of doctors" class="border-b">
+          <td class="px-6 py-4 text-sm text-gray-800" *ngIf="!isDocEditing">
+            {{ doctor.name }}
+          </td>
+          <td class="px-2 py-4 text-sm text-gray-800" *ngIf="!isDocEditing">
+            {{ doctor.specialty }}
+          </td>
+          <td
+            class="px-6 py-4 text-sm text-blue-600 hover:text-blue-800 cursor-pointer"
+            *ngIf="!isDocEditing"
+          >
+            <button (click)="editDoctor(doctor)">Edit</button> |
+            <button (click)="deleteDoctor(doctor)">Delete</button>
+          </td>
+          <div *ngIf="isDocEditing" class="bg-white shadow-md rounded-lg p-6">
+            <h2 class="text-3xl font-semibold mb-4">Edit</h2>
+            <form (ngSubmit)="updateDoc(doctor)">
+              <div class="mb-4">
+                <label class="text-lg font-medium" for="name">Name:</label>
+                <input
+                  type="text"
+                  id="name"
+                  [(ngModel)]="doctor.name"
+                  name="name"
+                  class="w-full border border-gray-300 rounded-md p-2"
+                  required
+                />
+              </div>
+
+              <div class="mb-4">
+                <label class="text-lg font-medium" for="email"
+                  >Specialty:</label
+                >
+                <input
+                  id="email"
+                  [(ngModel)]="doctor.specialty"
+                  name="speciality"
+                  class="w-full border border-gray-300 rounded-md p-2"
+                  required
+                />
+              </div>
+
+              <div class="flex justify-between">
+                <button
+                  type="submit"
+                  class="bg-green-500 text-white py-2 px-4 rounded-md"
+                >
+                  Save Changes
+                </button>
+                <button
+                  (click)="cancelDoc()"
+                  type="button"
+                  class="bg-red-500 text-white py-2 px-4 rounded-md"
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Patients Table -->
+  <div *ngIf="!showDoctorTab">
+    <h3 class="text-xl font-semibold mb-4">Patients</h3>
+    <table class="min-w-full table-auto bg-white shadow-md rounded-lg">
+      <thead *ngIf="!isPatEditing">
+        <tr class="bg-gray-100 text-left">
+          <th class="px-6 py-3 text-sm font-semibold text-gray-700">Name</th>
+          <th class="px-6 py-3 text-sm font-semibold text-gray-700">Age</th>
+          <th class="px-6 py-3 text-sm font-semibold text-gray-700">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let patient of patients" class="border-b">
+          <td class="px-6 py-4 text-sm text-gray-800" *ngIf="!isPatEditing">
+            {{ patient.name }}
+          </td>
+          <td class="px-6 py-4 text-sm text-gray-800" *ngIf="!isPatEditing">
+            {{ patient.age }}
+          </td>
+          <td
+            class="px-6 py-4 text-sm text-blue-600 hover:text-blue-800 cursor-pointer"
+            *ngIf="!isPatEditing"
+          >
+            <button (click)="editPatient(patient)">Edit</button> |
+            <button (click)="deletePatient(patient)">Delete</button>
+          </td>
+
+          <div *ngIf="isPatEditing" class="bg-white shadow-md rounded-lg p-6">
+            <h2 class="text-3xl font-semibold mb-4">Edit</h2>
+            <form (ngSubmit)="updatePat(patient)">
+              <div class="mb-4">
+                <label class="text-lg font-medium" for="name">Name:</label>
+                <input
+                  type="text"
+                  id="name"
+                  [(ngModel)]="patient.name"
+                  name="name"
+                  class="w-full border border-gray-300 rounded-md p-2"
+                  required
+                />
+              </div>
+
+              <div class="mb-4">
+                <label class="text-lg font-medium" for="email">Age:</label>
+                <input
+                  id="email"
+                  [(ngModel)]="patient.age"
+                  name="age"
+                  class="w-full border border-gray-300 rounded-md p-2"
+                  required
+                />
+              </div>
+
+              <div class="flex justify-between">
+                <button
+                  type="submit"
+                  class="bg-green-500 text-white py-2 px-4 rounded-md"
+                >
+                  Save Changes
+                </button>
+                <button
+                  (click)="cancelPat()"
+                  type="button"
+                  class="bg-red-500 text-white py-2 px-4 rounded-md"
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
