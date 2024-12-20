@@ -16,15 +16,15 @@ export class UserComponent {
   isPatEditing = false;
 
   doctors = [
-    { name: 'Dr. Triston Smith', specialty: 'Cardiologist' },
-    { name: 'Dr. Anthony Davis', specialty: 'Dermatologist' },
-    { name: 'Dr. Jane Johnson', specialty: 'Orthopedic' },
+    { id: 101, name: 'Dr. Triston Smith', specialty: 'Cardiologist' },
+    { id: 102, name: 'Dr. Anthony Davis', specialty: 'Dermatologist' },
+    { id: 103, name: 'Dr. Jane Johnson', specialty: 'Orthopedic' },
   ];
 
   patients = [
-    { name: 'Jane smith', age: 28 },
-    { name: 'Mark Cooper', age: 35 },
-    { name: 'Barry Gareth', age: 22 },
+    { id: 401, name: 'Jane smith', age: 28 },
+    { id: 402, name: 'Mark Cooper', age: 35 },
+    { id: 403, name: 'Barry Gareth', age: 22 },
   ];
 
   showDoctors() {
@@ -38,40 +38,78 @@ export class UserComponent {
   }
 
   // Edit doctor
+  currentEditingDoctor: any = null;
+
+  // Function to enable editing for a specific doctor
   editDoctor(doctor: any) {
-    this.updateDoc(doctor);
+    this.currentEditingDoctor = { ...doctor }; // Clone the doctor object
+    this.isDocEditing = true;
   }
 
+  // Function to update the doctor's details
   updateDoc(doctor: any) {
-    this.isDocEditing = !this.isDocEditing;
-  }
-
-  cancelDoc() {
+    const index = this.doctors.findIndex((d) => d.id === doctor.id);
+    if (index !== -1) {
+      this.doctors[index] = { ...doctor };
+    }
     this.isDocEditing = false;
   }
-  // Delete Doctor
+
+  // Cancel editing and reset
+  cancelDoc() {
+    this.currentEditingDoctor = null;
+    this.isDocEditing = false;
+  }
+
+  // Delete a doctor
   deleteDoctor(doctor: any) {
-    if (confirm(`Are you sure you want to delete ${doctor.name}?`)) {
-      this.doctors = this.doctors.filter((d) => d !== doctor);
-      console.log('Doctor deleted:', doctor);
+    if (
+      confirm(
+        `Are you sure you want to delete ${doctor.name} from the system ?`
+      )
+    ) {
+      this.doctors = this.doctors.filter((d) => d.id !== doctor.id);
+      setTimeout(() => alert(`${doctor.name} has been removed`), 200);
+    } else {
+      alert(`Action has been canceled!`);
     }
   }
 
   // Edit patient
+  currentEditingPatient: any = null;
+
+  // Function to enable editing for a specific patient
   editPatient(patient: any) {
-    this.updatePat(patient);
+    this.currentEditingPatient = { ...patient };
+    this.isPatEditing = true;
   }
 
+  // Function to update the patient's details
   updatePat(patient: any) {
-    this.isPatEditing = !this.isPatEditing;
+    const index = this.patients.findIndex((p) => p.id === patient.id);
+    if (index !== -1) {
+      this.patients[index] = { ...patient }; // Update the patient details
+    }
+    this.isPatEditing = false; // Exit edit mode
   }
+
+  // Cancel editing and reset
   cancelPat() {
+    this.currentEditingPatient = null;
     this.isPatEditing = false;
   }
-  // Delete Patient
+
+  // Delete a patient
   deletePatient(patient: any) {
-    if (confirm(`Are you sure you want to delete patient ${patient.name}?`)) {
-      this.patients = this.patients.filter((p) => p !== patient);
+    if (
+      confirm(
+        `Are you sure you want to delete ${patient.name} from the system ?`
+      )
+    ) {
+      this.patients = this.patients.filter((p) => p.id !== patient.id);
+      setTimeout(() => alert(`${patient.name} has been removed`), 200);
+    } else {
+      alert(`Action has been canceled!`);
     }
   }
 }

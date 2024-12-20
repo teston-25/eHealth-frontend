@@ -13,31 +13,37 @@ export class BlogComponent {
   doctor = 'Dr. X';
   blogPosts = [
     {
-      id: 1,
-      title: '5 Tips for a Healthy Heart',
-      author: 'Dr. John Smith',
-      date: '2024-11-16',
+      title: 'The Future of Healthcare',
+      author: 'Dr. Smith',
+      date: 'Dec 10, 2024',
       content:
-        'Heart health is vital for overall well-being. Incorporating exercise, a balanced diet, and regular check-ups can make a huge difference.',
-      tags: ['Heart Health', 'Wellness', 'Fitness'],
+        'Discover how technology is reshaping the future of healthcare, from AI diagnostics to telemedicine solutions that improve patient care and accessibility.',
+      tags: ['Health', 'Technology', 'Innovation'],
+      image: 'https://via.placeholder.com/600x400',
+      liked: false,
+      likes: 0,
     },
     {
-      id: 2,
-      title: 'The Importance of Mental Health Awareness',
-      author: 'Dr. Emily Jones',
-      date: '2024-11-15',
+      title: 'Mental Health Awareness: Breaking the Stigma',
+      author: 'Jane Doe',
+      date: 'Nov 22, 2024',
       content:
-        'Mental health is just as important as physical health. Learn how to manage stress and seek help when needed.',
-      tags: ['Mental Health', 'Awareness', 'Self-Care'],
+        'Mental health is just as important as physical health. Join us as we explore strategies to prioritize mental wellness and create supportive communities.',
+      tags: ['Mental Health', 'Awareness', 'Support'],
+      image: 'https://via.placeholder.com/600x400',
+      liked: false,
+      likes: 0,
     },
     {
-      id: 3,
-      title: 'Superfoods You Should Include in Your Diet',
-      author: 'Nutritionist Sarah Lee',
-      date: '2024-11-14',
+      title: 'Nutrition Myths Debunked',
+      author: 'John Carter',
+      date: 'Oct 15, 2024',
       content:
-        'Superfoods like berries, nuts, and greens are nutrient-packed and can boost your overall health.',
-      tags: ['Nutrition', 'Diet', 'Superfoods'],
+        'Are you confused about conflicting nutrition advice? We debunk common myths and provide evidence-based insights to help you make informed dietary choices.',
+      tags: ['Nutrition', 'Wellness', 'Diet'],
+      image: 'https://via.placeholder.com/600x400',
+      liked: false,
+      likes: 0,
     },
   ];
 
@@ -61,5 +67,10 @@ export class BlogComponent {
       this.commentForm = { name: '', message: '' }; // Reset form
       this.toggleCommentForm();
     }
+  }
+
+  toggleLike(post: any): void {
+    post.liked = !post.liked;
+    post.likes = post.liked ? post.likes + 1 : post.likes - 1;
   }
 }

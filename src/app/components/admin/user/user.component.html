@@ -5,17 +5,17 @@
 
   <!-- Tab Navigation -->
   <div class="mb-6">
-    <div class="flex space-x-4 border-b">
+    <div class="flex space-x-4 border-b bg-gray-200">
       <button
         (click)="showDoctors()"
-        class="text-lg font-medium py-2 px-4 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        class="text-lg font-medium py-2 px-4 hover:text-blue-600 focus:outline-none"
         [ngClass]="{ 'border-b-2 border-blue-500': showDoctorTab }"
       >
         Doctors
       </button>
       <button
         (click)="showPatients()"
-        class="text-lg font-medium py-2 px-4 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        class="text-lg font-medium py-2 px-4 hover:text-blue-600 focus:outline-none"
         [ngClass]="{ 'border-b-2 border-blue-500': !showDoctorTab }"
       >
         Patients
@@ -42,64 +42,75 @@
       </thead>
       <tbody>
         <tr *ngFor="let doctor of doctors" class="border-b">
-          <td class="px-6 py-4 text-sm text-gray-800" *ngIf="!isDocEditing">
+          <td
+            class="px-6 py-4 text-sm text-gray-800"
+            *ngIf="!isDocEditing || currentEditingDoctor?.id !== doctor.id"
+          >
             {{ doctor.name }}
           </td>
-          <td class="px-2 py-4 text-sm text-gray-800" *ngIf="!isDocEditing">
+          <td
+            class="px-2 py-4 text-sm text-gray-800"
+            *ngIf="!isDocEditing || currentEditingDoctor?.id !== doctor.id"
+          >
             {{ doctor.specialty }}
           </td>
           <td
             class="px-6 py-4 text-sm text-blue-600 hover:text-blue-800 cursor-pointer"
-            *ngIf="!isDocEditing"
+            *ngIf="!isDocEditing || currentEditingDoctor?.id !== doctor.id"
           >
             <button (click)="editDoctor(doctor)">Edit</button> |
             <button (click)="deleteDoctor(doctor)">Delete</button>
           </td>
-          <div *ngIf="isDocEditing" class="bg-white shadow-md rounded-lg p-6">
-            <h2 class="text-3xl font-semibold mb-4">Edit</h2>
-            <form (ngSubmit)="updateDoc(doctor)">
-              <div class="mb-4">
-                <label class="text-lg font-medium" for="name">Name:</label>
-                <input
-                  type="text"
-                  id="name"
-                  [(ngModel)]="doctor.name"
-                  name="name"
-                  class="w-full border border-gray-300 rounded-md p-2"
-                  required
-                />
-              </div>
 
-              <div class="mb-4">
-                <label class="text-lg font-medium" for="email"
-                  >Specialty:</label
-                >
-                <input
-                  id="email"
-                  [(ngModel)]="doctor.specialty"
-                  name="speciality"
-                  class="w-full border border-gray-300 rounded-md p-2"
-                  required
-                />
-              </div>
+          <!-- Editable form for each doctor -->
+          <td *ngIf="isDocEditing && currentEditingDoctor?.id === doctor.id">
+            <div class="bg-white shadow-md rounded-lg p-4">
+              <h2 class="text-3xl font-semibold mb-4">Edit</h2>
+              <form (ngSubmit)="updateDoc(currentEditingDoctor)">
+                <div class="mb-4">
+                  <label class="text-lg font-medium" for="name">Name:</label>
+                  <input
+                    type="text"
+                    id="name"
+                    [(ngModel)]="currentEditingDoctor.name"
+                    name="name"
+                    class="w-full border border-gray-300 rounded-md p-2"
+                    required
+                  />
+                </div>
 
-              <div class="flex justify-between">
-                <button
-                  type="submit"
-                  class="bg-green-500 text-white py-2 px-4 rounded-md"
-                >
-                  Save Changes
-                </button>
-                <button
-                  (click)="cancelDoc()"
-                  type="button"
-                  class="bg-red-500 text-white py-2 px-4 rounded-md"
-                >
-                  Cancel
-                </button>
-              </div>
-            </form>
-          </div>
+                <div class="mb-4">
+                  <label class="text-lg font-medium" for="specialty"
+                    >Specialty:</label
+                  >
+                  <input
+                    type="text"
+                    id="specialty"
+                    [(ngModel)]="currentEditingDoctor.specialty"
+                    name="specialty"
+                    class="w-full border border-gray-300 rounded-md p-2"
+                    required
+                  />
+                </div>
+
+                <div class="flex justify-between">
+                  <button
+                    type="submit"
+                    class="bg-blue-500 text-white py-2 px-2 rounded-md"
+                  >
+                    Save Changes
+                  </button>
+                  <button
+                    (click)="cancelDoc()"
+                    type="button"
+                    class="bg-red-500 text-white py-2 px-4 rounded-md"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </div>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -118,63 +129,74 @@
       </thead>
       <tbody>
         <tr *ngFor="let patient of patients" class="border-b">
-          <td class="px-6 py-4 text-sm text-gray-800" *ngIf="!isPatEditing">
+          <!-- Patient Info (only show when not editing) -->
+          <td
+            class="px-6 py-4 text-sm text-gray-800"
+            *ngIf="!isPatEditing || currentEditingPatient?.id !== patient.id"
+          >
             {{ patient.name }}
           </td>
-          <td class="px-6 py-4 text-sm text-gray-800" *ngIf="!isPatEditing">
+          <td
+            class="px-6 py-4 text-sm text-gray-800"
+            *ngIf="!isPatEditing || currentEditingPatient?.id !== patient.id"
+          >
             {{ patient.age }}
           </td>
           <td
             class="px-6 py-4 text-sm text-blue-600 hover:text-blue-800 cursor-pointer"
-            *ngIf="!isPatEditing"
+            *ngIf="!isPatEditing || currentEditingPatient?.id !== patient.id"
           >
             <button (click)="editPatient(patient)">Edit</button> |
             <button (click)="deletePatient(patient)">Delete</button>
           </td>
 
-          <div *ngIf="isPatEditing" class="bg-white shadow-md rounded-lg p-6">
-            <h2 class="text-3xl font-semibold mb-4">Edit</h2>
-            <form (ngSubmit)="updatePat(patient)">
-              <div class="mb-4">
-                <label class="text-lg font-medium" for="name">Name:</label>
-                <input
-                  type="text"
-                  id="name"
-                  [(ngModel)]="patient.name"
-                  name="name"
-                  class="w-full border border-gray-300 rounded-md p-2"
-                  required
-                />
-              </div>
+          <!-- Editable form for each patient (only show when editing) -->
+          <td *ngIf="isPatEditing && currentEditingPatient?.id === patient.id">
+            <div class="bg-white shadow-md rounded-lg p-6">
+              <h2 class="text-3xl font-semibold mb-4">Edit</h2>
+              <form (ngSubmit)="updatePat(currentEditingPatient)">
+                <div class="mb-4">
+                  <label class="text-lg font-medium" for="name">Name:</label>
+                  <input
+                    type="text"
+                    id="name"
+                    [(ngModel)]="currentEditingPatient.name"
+                    name="name"
+                    class="w-full border border-gray-300 rounded-md p-2"
+                    required
+                  />
+                </div>
 
-              <div class="mb-4">
-                <label class="text-lg font-medium" for="email">Age:</label>
-                <input
-                  id="email"
-                  [(ngModel)]="patient.age"
-                  name="age"
-                  class="w-full border border-gray-300 rounded-md p-2"
-                  required
-                />
-              </div>
+                <div class="mb-4">
+                  <label class="text-lg font-medium" for="age">Age:</label>
+                  <input
+                    type="number"
+                    id="age"
+                    [(ngModel)]="currentEditingPatient.age"
+                    name="age"
+                    class="w-full border border-gray-300 rounded-md p-2"
+                    required
+                  />
+                </div>
 
-              <div class="flex justify-between">
-                <button
-                  type="submit"
-                  class="bg-green-500 text-white py-2 px-4 rounded-md"
-                >
-                  Save Changes
-                </button>
-                <button
-                  (click)="cancelPat()"
-                  type="button"
-                  class="bg-red-500 text-white py-2 px-4 rounded-md"
-                >
-                  Cancel
-                </button>
-              </div>
-            </form>
-          </div>
+                <div class="flex justify-between">
+                  <button
+                    type="submit"
+                    class="bg-blue-500 text-white py-2 px-4 rounded-md"
+                  >
+                    Save Changes
+                  </button>
+                  <button
+                    (click)="cancelPat()"
+                    type="button"
+                    class="bg-red-500 text-white py-2 px-4 rounded-md"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </div>
+          </td>
         </tr>
       </tbody>
     </table>

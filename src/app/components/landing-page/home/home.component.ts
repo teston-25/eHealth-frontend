@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 export class HomeComponent {
   text = '';
   searchName: string = '';
+  searchSpeciality: string = '';
   selectedSpecialty: string = '';
   test: boolean = false;
   text_doctors = 'Show Doctors';
@@ -282,6 +283,7 @@ export class HomeComponent {
 
   filterDoctors() {
     const searchName = this.searchName?.toLowerCase().trim();
+    // const searchSpeciality = this.searchSpeciality?.toLowerCase().trim();
     const selectedSpecialty = this.selectedSpecialty?.toLowerCase();
 
     // Show nothing if there's no search query
@@ -291,10 +293,7 @@ export class HomeComponent {
     }
 
     this.filteredDoctors = this.infoDoctors.filter((doctor) => {
-      // Check if name matches the search query
       const matchesName = doctor.name.toLowerCase().includes(searchName);
-
-      // Check if specialty matches (or allow all if 'all' is selected)
       const matchesSpecialty =
         selectedSpecialty === 'all'
           ? true // Show all specialties

@@ -45,9 +45,4 @@ export class BlogsComponent {
       likes: 0,
     },
   ];
-
-  toggleLike(post: any): void {
-    post.liked = !post.liked;
-    post.likes = post.liked ? post.likes + 1 : post.likes - 1;
-  }
 }

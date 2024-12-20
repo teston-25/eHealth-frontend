@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -54,6 +55,30 @@ export class LoginComponent {
     this.userData.role = '';
     console.log(this.userData);
   }
+
+  // Angular Component Methods
+  // constructor(private http: HttpClient) {}
+
+  // login() {
+  //   if (
+  //     !this.userData.email ||
+  //     !this.userData.password ||
+  //     !this.userData.role
+  //   ) {
+  //     alert('All fields are required.');
+  //     return;
+  //   }
+
+  //   this.http.post('http://localhost:4200/login', this.userData).subscribe(
+  //     (response: any) => {
+  //       localStorage.setItem('token', response.token);
+  //       alert(`Login successful as ${response.role}`);
+  //     },
+  //     (error) => {
+  //       alert(error.error.message || 'Login failed.');
+  //     }
+  //   );
+  // }
 
   handleLogin() {
     console.log('Login Data:', this.patientData || this.doctorData);

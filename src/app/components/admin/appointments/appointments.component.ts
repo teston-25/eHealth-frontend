@@ -10,6 +10,9 @@ import { Component } from '@angular/core';
 })
 export class AppointmentsComponent {
   // appointment
+  openDoctor: boolean = true;
+  openPatient: boolean = false;
+
   appointmentsData = {
     doctors: [
       {
@@ -117,4 +120,15 @@ export class AppointmentsComponent {
       },
     ],
   };
+
+  //Conditional rendering for patient and doctor appointments
+  onDoc() {
+    this.openDoctor = true;
+    this.openPatient = false;
+  }
+
+  onPat() {
+    this.openDoctor = false;
+    this.openPatient = true;
+  }
 }
