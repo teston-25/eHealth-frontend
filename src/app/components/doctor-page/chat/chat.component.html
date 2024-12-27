@@ -28,6 +28,14 @@
   >
     <div class="chat-header p-5 bg-blue-600 text-white text-lg font-semibold">
       {{ selectedContact.name }}
+
+      <!-- Voice Chat Control -->
+      <button
+        (click)="toggleVoiceChat()"
+        class="ml-3 bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-600"
+      >
+        {{ isVoiceChatActive ? "🔚" : "📞" }}
+      </button>
     </div>
 
     <div
@@ -44,6 +52,13 @@
           {{ message.sender }}: {{ message.text }}
         </p>
       </div>
+    </div>
+
+    <!-- Audio Stream for Voice Chat -->
+    <div *ngIf="isVoiceChatActive" class="voice-chat-container p-4">
+      <h3 class="text-lg font-semibold">Voice Chat</h3>
+      <audio *ngIf="localStream" [srcObject]="localStream" autoplay></audio>
+      <audio *ngIf="remoteStream" [srcObject]="remoteStream" autoplay></audio>
     </div>
 
     <div class="chat-input p-4 flex gap-3 border-t border-gray-300 bg-white">

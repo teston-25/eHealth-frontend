@@ -1,0 +1,6 @@
+@ehealth_HostAddress = http://localhost:5194
+
+GET {{ehealth_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

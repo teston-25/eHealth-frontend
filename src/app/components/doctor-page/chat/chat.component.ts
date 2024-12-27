@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ChatService } from '../../../chat.service';
+import { VoiceChatService } from '../../../voice-chat.service';
 
 @Component({
   selector: 'app-chat',
@@ -40,6 +42,10 @@ export class ChatComponent {
   selectedContact: any = null;
   newMessage: string = '';
   searchQuery: string = '';
+  message: string = '';
+  isVoiceChatActive: boolean = false;
+  localStream: MediaStream | null = null;
+  remoteStream: MediaStream | null = null;
 
   // ngOnInit(): void {}
 
@@ -63,5 +69,30 @@ export class ChatComponent {
       this.messages.push({ sender: 'Me', text: this.newMessage });
       this.newMessage = '';
     }
+  }
+
+  constructor(
+    private chatService: ChatService,
+    private voiceChatService: VoiceChatService
+  ) {}
+
+  toggleVoiceChat() {
+    if (this.isVoiceChatActive) {
+      this.stopVoiceChat();
+    } else {
+      this.startVoiceChat();
+    }
+  }
+
+  async startVoiceChat() {
+    this.localStream = await this.voiceChatService.initVoiceChat();
+    this.isVoiceChatActive = true;
+  }
+
+  stopVoiceChat() {
+    this.voiceChatService.stopCall();
+    this.localStream = null;
+    this.remoteStream = null;
+    this.isVoiceChatActive = false;
   }
 }
